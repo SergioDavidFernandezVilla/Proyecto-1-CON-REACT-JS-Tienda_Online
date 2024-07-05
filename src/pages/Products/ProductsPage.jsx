@@ -1,8 +1,8 @@
 // Components
-import HeaderMenuComponent from "../../components/Menu/HeaderMenuComponent";
+import HeaderMenuComponent from "../../components/Header/HeaderMenuComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
-import MenuFiltersProductsComponent from "../../components/Menu/FilterProducts/MenuFiltersProductsComponent";
-import CardsArticleComponent from "../../components/Cards/CardsArray/CardsArticleComponent";
+import MenuFiltersProductsComponent from "../../components/Menu/FilterProducts/MenuFiltersProducts/MenuFiltersProductsComponent";
+import CardsArticleComponent from "../../components/Cards/CardsArticle/CardsArticleComponent";
 import NavPaginationComponent from "../../components/Pagination/NavPaginationComponent";
 
 // Icons

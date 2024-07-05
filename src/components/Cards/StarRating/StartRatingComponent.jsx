@@ -1,5 +1,5 @@
-import React from "react";
-import StarSVG from "./StartSVG/StartSVGComponent";
+//Icons
+import StarSVG from "../StarRating/StartSVG/StartSVGComponent";
 
 // Componente StartRatingComponent para mostrar la calificación con estrellas
 export function StartRatingComponent({

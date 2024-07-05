@@ -3,12 +3,12 @@ import { useParams, Link } from "react-router-dom";
 import { useState } from "react";
 
 //Components
-import HeaderMenuComponent from "../../components/Menu/HeaderMenuComponent";
+import HeaderMenuComponent from "../../components/Header/HeaderMenuComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
-import CardPayComponent from "../../components/Cards/DetailCard/CardPayComponent";
-import CardFormsToPayComponent from "../../components/Cards/DetailCard/CardFormsToPayComponent";
+import CardPayComponent from "../../components/Cards/DetailCard/CardPay/CardPayComponent";
+import CardFormsToPayComponent from "../../components/Cards/DetailCard/CardForms/CardFormsToPayComponent";
 import GoToBackComponent from "../../components/VolverLink/GoToBackComponent";
-import CardsArticleComponent from "../../components/Cards/CardsArray/CardsArticleComponent";
+import CardsArticleComponent from "../../components/Cards/CardsArticle/CardsArticleComponent";
 import StarRatingComponent from "../../components/Cards/StarRating/StartRatingComponent";
 
 //Icons

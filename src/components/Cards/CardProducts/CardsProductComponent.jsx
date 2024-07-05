@@ -1,11 +1,15 @@
-import React from "react";
+//Dependencies
 import { Link } from "react-router-dom";
+
+//Icons
 import {
   MdArrowCircleRight,
   MdArrowCircleLeft,
   MdArrowForward,
 } from "react-icons/md";
-import CardProduct from "../products/CardProduct";
+
+//Components
+import CardProduct from "../products/CardProduct/CardProductComponent";
 
 export default function CardsProductComponent({
   title,
@@ -18,14 +22,6 @@ export default function CardsProductComponent({
   classNameCarrousel,
   classNamePopular,
 }) {
-  const startIndex = currentPage * 5;
-  const endIndex = jsonAPI.length - 1;
-  const totalpages = 5;
-  const showPrevArrow = currentPage !== 0; // Mostrar flecha izquierda si no estamos en la primera página
-  const showNextArrow = currentPage !== 1; // Mostrar flecha derecha si no estamos en la última página
-
-  console.log(currentPage);
-
   return (
     <div className={`container_products_interesantes`}>
       <div className="container__home__products">

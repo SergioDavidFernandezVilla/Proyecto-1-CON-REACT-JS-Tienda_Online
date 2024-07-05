@@ -1,11 +1,16 @@
+//Dependencies
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
+
+//Icons
 import {
   MdLocalGroceryStore,
   MdOutlineFavorite,
   MdFavoriteBorder,
 } from "react-icons/md";
-import OptionsCard from "../OptionsCard";
+
+//Components
+import OptionsCard from "../OptionCard/OptionsCardComponent";
 
 export default function CardProduct({
   title,

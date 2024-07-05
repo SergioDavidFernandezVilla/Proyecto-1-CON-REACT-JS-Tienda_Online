@@ -1,4 +1,4 @@
-import ResultSearchComponent from "./ResultSearchComponent";
+import OnlyResultSearchComponent from "../OnlyResultSearch/OnlyResultSearchComponent";
 
 export default function ResultsSearchMenu({
   data = [],
@@ -22,7 +22,7 @@ export default function ResultsSearchMenu({
       ref={ContenedorResultsSearchRef}
     >
       {combinedResults.map((product, index) => (
-        <ResultSearchComponent
+        <OnlyResultSearchComponent
           key={`${product.id}-${index}`}
           id={product.id}
           nombre={product.nombre.replace(/<\/?[^>]+(>|$)/g, "")}

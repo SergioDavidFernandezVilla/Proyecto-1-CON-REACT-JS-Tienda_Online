@@ -1,5 +1,5 @@
 //Components
-import HeaderMenuComponent from "../../components/Menu/HeaderMenuComponent";
+import HeaderMenuComponent from "../../components/Header/HeaderMenuComponent";
 import CardsProductComponent from "../../components/Cards/CardProducts/CardsProductComponent";
 import GalleryComponent from "../../components/Cards/Gallery/GalleryComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
@@ -10,7 +10,7 @@ import productsPopularData from "../../services/Jsons/productsPopularData";
 import productsImagen from "../../services/Jsons/ProductsImagen";
 
 // Hooks
-import { usePagination } from "../../hooks/usePaginationHook"; // Ajusta la ruta según donde coloques el hook
+import { usePagination } from "../../hooks/CardsCarrousel/usePaginationHook";
 
 export default function HomePage() {
   const classNameDefault = "container_products_interesantes__carrousel";

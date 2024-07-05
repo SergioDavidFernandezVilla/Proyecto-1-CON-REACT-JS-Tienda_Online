@@ -1,7 +1,14 @@
+//Icons
 import { MdOutlineSearch } from "react-icons/md";
+
+//Dependencies
 import { useState, useEffect, useRef } from "react";
-import OptionsFilterMenu from "./OptionsFilterMenu";
-import ResultsSearchMenu from "../Results/ResultsSearchMenu";
+
+//Components
+import OptionsFilterMenu from "../OptionFilterMenu/OptionsFilterMenuComponent";
+import ResultsSearchMenu from "../Results/ResultsSearch/ResultsSearchMenuComponent";
+
+//JSONs
 import data from "../../../../services/Jsons/productsPopularData";
 import data2 from "../../../../services/Jsons/ProductsImagen";
 

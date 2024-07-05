@@ -1,10 +1,10 @@
-import React from "react";
+//Components
 import StarRatingComponent from "../StarRating/StartRatingComponent";
-import OptionsCard from "../products/OptionsCard";
 
-import { MdMoreVert } from "react-icons/md";
-import { MdOutlineShare } from "react-icons/md";
+//Components
+import OptionsCard from "../products/OptionCard/OptionsCardComponent";
 
+//Dependencies
 import { Link } from "react-router-dom";
 
 export default function GalleryComponent({

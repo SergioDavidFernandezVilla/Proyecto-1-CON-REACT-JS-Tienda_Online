@@ -7,7 +7,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 // Pages Components
 import HomePage from "./pages/Home/HomePage";
 import ProductsPage from "./pages/Products/ProductsPage";
-import ProductDetailPage from "./pages/DetailProduct/ProductDetailPage";
+import ProductDetailPage from "./pages/ProductDetails/ProductDetailPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
 function App() {
