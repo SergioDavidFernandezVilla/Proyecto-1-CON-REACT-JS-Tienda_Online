@@ -13,9 +13,7 @@ export default function OptionsFiltersComponent({ options }) {
   };
   return (
     <div className="container__opciones__filter__page">
-      <form className="container__opciones__filter__page__form">
-        {FiltersComponents[options.name]}
-      </form>
+      {FiltersComponents[options.name]}
     </div>
   );
 }

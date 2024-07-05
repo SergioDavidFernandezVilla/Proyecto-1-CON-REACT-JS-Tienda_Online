@@ -1,8 +1,17 @@
 export default function FilterOfertaComponent() {
   return (
-    <div>
-      <p>XDD</p>
-      <strong>OFERTAS GOD</strong>
-    </div>
+    <form
+      className="container__opciones__filter__page__form"
+      name="form__filter__ofertas"
+    >
+      <input type="checkbox" name="form__filter__ofertas" value="ofertas" />
+      <label>ofertas mas recientes</label>
+
+      <input type="checkbox" name="form__filter__ofertas" value="ofertas" />
+      <label>ofertas mas antiguas</label>
+
+      <input type="checkbox" name="form__filter__ofertas" value="ofertas" />
+      <label>Todas las ofertas</label>
+    </form>
   );
 }

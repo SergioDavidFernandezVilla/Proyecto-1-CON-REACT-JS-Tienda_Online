@@ -106,7 +106,7 @@ export default function SearchMenuComponent() {
 
   return (
     <div className="container__search_menu__nav__div">
-      <form className="header1__menu__nav__form">
+      <form className="header1__menu__nav__form" name="form__search">
         <div className="header1__menu__nav__form__div">
           <button
             className="header1__menu__nav__form__div__button_search"
@@ -115,6 +115,7 @@ export default function SearchMenuComponent() {
             <MdOutlineSearch className="header1__menu__nav__form__div__button__search__icon" />
           </button>
           <input
+            name="form__search__input"
             ref={searchInputRef}
             type="search"
             placeholder="Buscar productos...."

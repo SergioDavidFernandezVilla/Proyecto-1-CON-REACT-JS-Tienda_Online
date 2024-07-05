@@ -7,7 +7,7 @@ import { MdShoppingCart, MdSettings } from "react-icons/md";
 import LogoTienda from "../../assets/images/logo_tienda.jpg";
 
 //Components
-import SearchMenuComponent from "../Menu/Search/SearchMenu/SearchMenuComponent";
+import SearchMenuComponent from "../Header/Search/SearchMenu/SearchMenuComponent";
 
 //JSONs
 import data1 from "../../services/Jsons/productsPopularData";

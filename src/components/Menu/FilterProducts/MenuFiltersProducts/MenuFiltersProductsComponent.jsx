@@ -51,10 +51,16 @@ export default function MenuFiltersProductsComponent() {
             }`}
           >
             <button
-              className="nav__products__filter__page__a"
+              className={`nav__products__filter__page__a ${
+                activeFilter === option.name ? "active" : "disabled"
+              }`}
               onClick={() => handleFilterClick(option.name)}
             >
-              <MdExpandMore className="nav__products__filter__page__a__icon" />
+              <MdExpandMore
+                className={`nav__products__filter__page__a__icon ${
+                  activeFilter === option.name ? "active" : "disabled"
+                }`}
+              />
               {option.name.charAt(0).toUpperCase() + option.name.slice(1)}
             </button>
             {activeFilter === option.name && (
