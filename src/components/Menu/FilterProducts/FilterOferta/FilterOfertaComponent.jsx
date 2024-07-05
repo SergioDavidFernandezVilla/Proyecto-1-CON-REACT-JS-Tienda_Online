@@ -1,7 +1,7 @@
 export default function FilterOfertaComponent() {
   return (
     <div>
-      <p>XD</p>
+      <p>XDD</p>
       <strong>OFERTAS GOD</strong>
     </div>
   );
