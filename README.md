@@ -17,8 +17,8 @@
 ### Backend
 
 - **Node.js**: Entorno de ejecución de JavaScript del lado del servidor.
-- **Express**: Framework web minimalista para Node.js (u otro framework si es aplicable).
-- **Base de datos**: MySQL, PostgreSQL u otra base de datos que hayas utilizado para almacenar los datos de la tienda.
+- **Express**: Framework web minimalista para Node.js.
+- **Base de datos**: MySQL.
 
 ## Requisitos Previos
 
