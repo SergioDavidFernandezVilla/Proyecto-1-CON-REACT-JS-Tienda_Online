@@ -1,4 +1,4 @@
-# Proyecto Tienda Online
+# Proyecto Tienda Online ✨✨
 
 ## Descripción
 
