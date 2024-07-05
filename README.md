@@ -2,7 +2,9 @@
 
 ## Descripción
 
-El objetivo de este proyecto es desarrollar una aplicación completamente funcional de una tienda online, incluyendo tanto el frontend como el backend con la base de datos integrada. Se ha puesto especial atención en el diseño de los estilos para que sean coherentes, agradables y fáciles de entender para usuarios de todas las edades y nacionalidades.
+#### El objetivo de este proyecto es desarrollar una aplicación completamente funcional de una tienda online, incluyendo tanto el frontend como el backend con la base de datos integrada. Se ha puesto especial atención en el diseño de los estilos para que sean coherentes, agradables y fáciles de entender para usuarios de todas las edades y nacionalidades.
+
+#### El proyecto se ha dividido en dos partes: el frontend y el backend. El frontend se encarga de la interfaz de usuario, mientras que el backend se encarga de la lógica de negocios y la base de datos.
 
 ## Tecnologías Utilizadas
 
