@@ -6,7 +6,7 @@
 
 #### El proyecto se ha dividido en dos partes: el frontend y el backend. El frontend se encarga de la interfaz de usuario, mientras que el backend se encarga de la lógica de negocios y la base de datos.
 
-![Vista previa del proyecto](https://github.com/SergioDavidFernandezVilla/Proyecto-1-CON-REACT-JS-Tienda_Online/Frontend/public/imagesPreview/imagen__preview__1.PNG)
+![Vista previa del proyecto 👀](Frontend/public/imagesPreview/imagen__preview__1.PNG)
 
 ## Tecnologías Utilizadas
 
