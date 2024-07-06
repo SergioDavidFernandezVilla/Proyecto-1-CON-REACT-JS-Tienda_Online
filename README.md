@@ -15,7 +15,7 @@
 ### Frontend
 
 - **React.js**: Biblioteca JavaScript de código abierto para construir interfaces de usuario.
-- **Vite**: Bundler moderno para aplicaciones web con React (puedes mencionar otro bundler si lo utilizas).
+- **Vite**: Bundler moderno para aplicaciones web.
 - **HTML/CSS/JavaScript**: Tecnologías fundamentales para la creación de interfaces web.
 
 ### Backend
