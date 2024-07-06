@@ -8,7 +8,7 @@ export default function FilterPriceComponent() {
         className="form__opciones__filter__page__label"
         htmlFor="precio-minimo"
       >
-        Precio mínimo:
+        <strong>Precio mínimo:</strong>
       </label>
       <input
         className="form__opciones__filter__page__input"
@@ -22,7 +22,7 @@ export default function FilterPriceComponent() {
         className="form__opciones__filter__page__label"
         htmlFor="precio-maximo"
       >
-        Precio máximo:
+        <strong>Precio máximo:</strong>
       </label>
       <input
         className="form__opciones__filter__page__input"

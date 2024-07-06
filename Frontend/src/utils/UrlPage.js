@@ -1,3 +1,11 @@
-export const URLProductos = "/productos/page/"; //url de la pagina de productos
+// UrlPage.js
+export const URL_PRODUCTS = "/productos";
+export const URL_PRODUCTS_CATEGORY = "/categoria";
+export const URL_PRODUCTS_CATEGORY_ID = "/:categoria";
+export const URL_PRODUCTS_PAGE = "/page/";
 
-export const URLProductoDetail ="/productos/marca/:marca/categoria/:categoria/producto/:slug"; //url de la pagina de productos al detalle de un producto
+// URL de la pagina de productos
+export const URL_PRODUCTS_RESULT = "/productos/categoria/:categoria/page/:page";
+
+// URL de detalle de producto
+export const URL_PRODUCT_DETAIL = "/productos/marca/:marca/categoria/:categoria/producto/:slug";

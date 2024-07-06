@@ -4,6 +4,9 @@ import FilterPriceComponent from "../FilterPrice/FilterPriceComponent";
 import FilterCategoriesComponent from "../FilterCategories/FilterCategoriesComponent";
 import FilterTodosComponent from "../FilterTodos/FilterTodosComponent";
 
+//Dependencies
+import { useState, useRef } from "react";
+
 export default function OptionsFiltersComponent({ options, activeFilter }) {
   const FiltersComponents = {
     todos: <FilterTodosComponent />,

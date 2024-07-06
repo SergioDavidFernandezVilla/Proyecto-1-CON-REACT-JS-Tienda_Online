@@ -11,20 +11,29 @@ import ProductDetailPage from "./pages/ProductDetails/ProductDetailPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
 //Utils
-import { URLProductos, URLProductoDetail } from "./utils/UrlPage";
+import {
+  URL_PRODUCTS,
+  URL_PRODUCTS_CATEGORY,
+  URL_PRODUCTS_CATEGORY_ID,
+  URL_PRODUCTS_PAGE,
+  URL_PRODUCT_DETAIL,
+} from "./utils/UrlPage";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path={`${URLProductos}:id`} element={<ProductsPage />} />
+          <Route
+            path={`${URL_PRODUCTS}${URL_PRODUCTS_CATEGORY}${URL_PRODUCTS_CATEGORY_ID}${URL_PRODUCTS_PAGE}:id`}
+            element={<ProductsPage />}
+          />
           <Route
             path="/products/producto-popular-9"
             element={<ProductsPage />}
           />
 
-          <Route path={URLProductoDetail} element={<ProductDetailPage />} />
+          <Route path={URL_PRODUCT_DETAIL} element={<ProductDetailPage />} />
 
           <Route path="/" element={<HomePage />} />
           <Route path="*" element={<NotFoundPage />} />

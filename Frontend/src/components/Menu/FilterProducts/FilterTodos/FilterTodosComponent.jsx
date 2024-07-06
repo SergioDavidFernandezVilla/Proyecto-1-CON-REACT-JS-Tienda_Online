@@ -1,20 +1,31 @@
+// Hooks
+import useFilterTodosHook from "./../../../../hooks/CategoriesFilters/useCategoriesFiltersHook";
+
+// JSONs
+import { AllFilters } from "../../../../services/Jsons/CategoriesFilters/GategoriesFilters";
+
 export default function FilterTodosComponent() {
+  const { handleClick } = useFilterTodosHook();
+
   return (
     <form
       className="container__opciones__filter__page__form"
       name="form__filter__todos"
     >
-      <div className="form__opciones__filter__input__div">
-        <input
-          type="checkbox"
-          id="todos"
-          name="form__filter__todos"
-          value="todos"
-        />
-        <label htmlFor="todos">
-          <strong>Todas las ofertas</strong>
-        </label>
-      </div>
+      {AllFilters.map((filter) => (
+        <div className="form__opciones__filter__input__div" key={filter.id}>
+          <input
+            onClick={(e) => handleClick(e, filter.name)}
+            type="checkbox"
+            id={filter.id}
+            name="categorias"
+            value={filter.name}
+          />
+          <label htmlFor={filter.id}>
+            <strong>{filter.name}</strong>
+          </label>
+        </div>
+      ))}
     </form>
   );
 }

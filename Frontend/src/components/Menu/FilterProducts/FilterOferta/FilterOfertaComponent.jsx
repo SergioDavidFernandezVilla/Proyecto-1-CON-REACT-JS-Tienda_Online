@@ -1,44 +1,31 @@
+// Hooks
+import useFilterOfertasHook from "./../../../../hooks/CategoriesFilters/useCategoriesFiltersHook";
+
+// JSONs
+import { AllOfertas } from "../../../../services/Jsons/CategoriesFilters/GategoriesFilters";
+
 export default function FilterOfertaComponent() {
+  const { handleClick } = useFilterOfertasHook();
+
   return (
     <form
       className="container__opciones__filter__page__form"
       name="form__filter__ofertas"
     >
-      <div className="form__opciones__filter__input__div">
-        <input
-          type="checkbox"
-          id="recientes"
-          name="form__filter__ofertas"
-          value="recientes"
-        />
-        <label htmlFor="recientes">
-          <strong>Ofertas más recientes</strong>
-        </label>
-      </div>
-
-      <div className="form__opciones__filter__input__div">
-        <input
-          type="checkbox"
-          id="antiguas"
-          name="form__filter__ofertas"
-          value="antiguas"
-        />
-        <label htmlFor="antiguas">
-          <strong>Ofertas más antiguas</strong>
-        </label>
-      </div>
-
-      <div className="form__opciones__filter__input__div">
-        <input
-          type="checkbox"
-          id="todas"
-          name="form__filter__ofertas"
-          value="todas"
-        />
-        <label htmlFor="todas">
-          <strong>Todas las ofertas</strong>
-        </label>
-      </div>
+      {AllOfertas.map((oferta) => (
+        <div className="form__opciones__filter__input__div" key={oferta.id}>
+          <input
+            onClick={(e) => handleClick(e, oferta.name)}
+            type="checkbox"
+            id={oferta.id}
+            name="categorias"
+            value={oferta.name}
+          />
+          <label htmlFor={oferta.id}>
+            <strong>{oferta.name}</strong>
+          </label>
+        </div>
+      ))}
     </form>
   );
 }

@@ -1,8 +1,12 @@
 // Dependencies
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 
-//Utils
-import { URLProductos } from "../../utils/UrlPage";
+// Utils
+import {
+  URL_PRODUCTS,
+  URL_PRODUCTS_CATEGORY,
+  URL_PRODUCTS_PAGE,
+} from "../../utils/UrlPage";
 
 export default function NavPaginationComponent({
   totalPages,
@@ -12,6 +16,11 @@ export default function NavPaginationComponent({
   handleClickAumentPage,
   handleClickAumentPagePrevious,
 }) {
+  const navigate = useNavigate();
+  const { categoria } = useParams();
+
+  const URL = `${URL_PRODUCTS}${URL_PRODUCTS_CATEGORY}/${categoria}${URL_PRODUCTS_PAGE}`;
+
   return (
     <nav className="container__products__filter__page__nav">
       <div className="container__products__filter__page__nav__div">
@@ -20,7 +29,7 @@ export default function NavPaginationComponent({
             <button className="container__products__filter__page__nav__div__pagination__button">
               <Link
                 className="container__products__filter__page__nav__div__pagination__button__Link"
-                to={`${URLProductos}${currentPage - 1}`}
+                to={`${URL}${currentPage - 1}`}
                 onClick={handleClickAumentPagePrevious}
               >
                 Anterior
@@ -39,7 +48,7 @@ export default function NavPaginationComponent({
                     className={`container__products__filter__page__nav__div__pagination__link ${
                       currentPage === pageNum ? "active" : "disabled"
                     }`}
-                    to={`${URLProductos}${pageNum}`}
+                    to={`${URL}${pageNum}`}
                     onClick={() => setCurrentPage(pageNum)}
                   >
                     {pageNum}
@@ -51,7 +60,7 @@ export default function NavPaginationComponent({
             <button className="container__products__filter__page__nav__div__pagination__button">
               <Link
                 className="container__products__filter__page__nav__div__pagination__button__Link"
-                to={`${URLProductos}${currentPage + 1}`}
+                to={`${URL}${currentPage + 1}`}
                 onClick={handleClickAumentPage}
               >
                 Siguiente
