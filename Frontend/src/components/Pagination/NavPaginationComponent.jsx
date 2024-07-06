@@ -1,6 +1,9 @@
 // Dependencies
 import { Link } from "react-router-dom";
 
+//Utils
+import URLProductos from "../../../utils/UrlPage";
+
 export default function NavPaginationComponent({
   totalPages,
   currentPage,
@@ -17,7 +20,7 @@ export default function NavPaginationComponent({
             <button className="container__products__filter__page__nav__div__pagination__button">
               <Link
                 className="container__products__filter__page__nav__div__pagination__button__Link"
-                to={`/products/${currentPage - 1}`}
+                to={`${URLProductos}${currentPage - 1}`}
                 onClick={handleClickAumentPagePrevious}
               >
                 Anterior
@@ -36,7 +39,7 @@ export default function NavPaginationComponent({
                     className={`container__products__filter__page__nav__div__pagination__link ${
                       currentPage === pageNum ? "active" : "disabled"
                     }`}
-                    to={`/products/${pageNum}`}
+                    to={`${URLProductos}${pageNum}`}
                     onClick={() => setCurrentPage(pageNum)}
                   >
                     {pageNum}
@@ -48,7 +51,7 @@ export default function NavPaginationComponent({
             <button className="container__products__filter__page__nav__div__pagination__button">
               <Link
                 className="container__products__filter__page__nav__div__pagination__button__Link"
-                to={`/products/${currentPage + 1}`}
+                to={`${URLProductos}${currentPage + 1}`}
                 onClick={handleClickAumentPage}
               >
                 Siguiente

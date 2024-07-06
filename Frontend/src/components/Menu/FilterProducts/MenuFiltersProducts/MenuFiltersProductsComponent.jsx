@@ -2,40 +2,27 @@
 import { MdExpandMore } from "react-icons/md";
 
 //Dependencies
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 // Components
 import OptionsFiltersComponent from "../OptionsFilters/OptionsFiltersComponent";
 
+//JSONs
+import DataOptions from "../../../../services/Jsons/OptionsFiltersMenu";
+
 export default function MenuFiltersProductsComponent() {
   const [activeFilter, setActiveFilter] = useState(null);
+  const [options, setOptions] = useState(DataOptions);
 
-  const options = [
-    {
-      id: 1,
-      name: "todos",
-    },
-    {
-      id: 2,
-      name: "categorias",
-    },
-    {
-      id: 3,
-      name: "ofertas",
-    },
-    {
-      id: 4,
-      name: "precios",
-    },
-  ];
+  useEffect(() => {
+    setOptions(DataOptions);
+  }, []);
 
   const handleFilterClick = (filterName) => {
     setActiveFilter((prevFilter) =>
       prevFilter === filterName ? null : filterName
     );
   };
-
-  console.log(options);
 
   return (
     <nav className="nav__products__filter__page">
@@ -64,7 +51,10 @@ export default function MenuFiltersProductsComponent() {
               {option.name.charAt(0).toUpperCase() + option.name.slice(1)}
             </button>
             {activeFilter === option.name && (
-              <OptionsFiltersComponent options={option} />
+              <OptionsFiltersComponent
+                options={option}
+                activeFilter={activeFilter}
+              />
             )}
           </li>
         ))}

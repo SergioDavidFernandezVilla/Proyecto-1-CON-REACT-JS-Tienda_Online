@@ -4,7 +4,7 @@ import FilterPriceComponent from "../FilterPrice/FilterPriceComponent";
 import FilterCategoriesComponent from "../FilterCategories/FilterCategoriesComponent";
 import FilterTodosComponent from "../FilterTodos/FilterTodosComponent";
 
-export default function OptionsFiltersComponent({ options }) {
+export default function OptionsFiltersComponent({ options, activeFilter }) {
   const FiltersComponents = {
     todos: <FilterTodosComponent />,
     precios: <FilterPriceComponent />,
@@ -12,7 +12,11 @@ export default function OptionsFiltersComponent({ options }) {
     categorias: <FilterCategoriesComponent />,
   };
   return (
-    <div className="container__opciones__filter__page">
+    <div
+      className={`container__opciones__filter__page ${
+        activeFilter === options.name ? "active" : "disabled"
+      }`}
+    >
       {FiltersComponents[options.name]}
     </div>
   );

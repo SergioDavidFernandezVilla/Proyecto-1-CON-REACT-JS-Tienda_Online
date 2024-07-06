@@ -4,6 +4,7 @@ import {
   MdDiscount,
   MdEventSeat,
   MdGite,
+  MdFolderCopy,
 } from "react-icons/md";
 
 export default function OptionsFilterMenu() {
@@ -40,6 +41,13 @@ export default function OptionsFilterMenu() {
         <p className="item__filter__menu__search__p">
           <MdGite className="item__filter__menu__search__p__icon" />
           Cosas del hogar
+        </p>
+      </div>
+
+      <div className="item__filter__menu__search">
+        <p className="item__filter__menu__search__p">
+          <MdFolderCopy className="item__filter__menu__search__p__icon" />
+          Ver todos los filtros
         </p>
       </div>
     </div>

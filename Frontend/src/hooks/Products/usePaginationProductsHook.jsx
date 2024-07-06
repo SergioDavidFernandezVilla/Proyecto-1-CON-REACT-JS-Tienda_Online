@@ -1,10 +1,12 @@
-// hooks/usePaginationProductsHook.js
+//Dependencies
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
 const usePaginationProductsHook = ({ totalItems, itemsPerPage }) => {
   const { id } = useParams();
   const navigate = useNavigate();
+
+  const URL = "/productos/page/";
 
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(1);
@@ -24,7 +26,7 @@ const usePaginationProductsHook = ({ totalItems, itemsPerPage }) => {
   }, [id, totalPages]);
 
   useEffect(() => {
-    navigate(`/products/${currentPage}`, { replace: true });
+    navigate(`${URL}${currentPage}`, { replace: true });
   }, [currentPage, navigate]);
 
   const handleClickAumentPage = () => {

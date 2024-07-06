@@ -10,12 +10,15 @@ import ProductsPage from "./pages/Products/ProductsPage";
 import ProductDetailPage from "./pages/ProductDetails/ProductDetailPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
+//Utils
+import URLProductos from "./utils/UrlPage";
+
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route path="products/:id" element={<ProductsPage />} />
+          <Route path={`${URLProductos}`} element={<ProductsPage />} />
           <Route
             path="/products/producto-popular-9"
             element={<ProductsPage />}
