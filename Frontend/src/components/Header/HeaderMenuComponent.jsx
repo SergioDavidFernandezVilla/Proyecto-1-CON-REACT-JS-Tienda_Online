@@ -15,7 +15,7 @@ import data2 from "../../services/Jsons/ProductsImagen";
 import data3 from "../../services/Jsons/GalleyProductsImagen";
 
 //Utils
-import URLProductos from "../../utils/UrlPage";
+import { URLProductos } from "../../utils/UrlPage";
 
 export default function HeaderMenuComponent() {
   const ArrayProducts = [...data1, ...data2, ...data3];

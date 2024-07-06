@@ -2,7 +2,7 @@
 import { Link } from "react-router-dom";
 
 //Utils
-import URLProductos from "../../../utils/UrlPage";
+import { URLProductos } from "../../utils/UrlPage";
 
 export default function NavPaginationComponent({
   totalPages,
