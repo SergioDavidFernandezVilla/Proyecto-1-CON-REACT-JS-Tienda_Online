@@ -6,6 +6,8 @@
 
 #### El proyecto se ha dividido en dos partes: el frontend y el backend. El frontend se encarga de la interfaz de usuario, mientras que el backend se encarga de la lógica de negocios y la base de datos.
 
+## 📸 Vista previa del proyecto^^ 👀
+### Una vez que se haya completado el proyecto, se hará un videotutorial para explicar el funcionamiento de la aplicación y los pasos que se han seguido para desarrollarla.
 ![Vista previa del proyecto 👀](Frontend/public/imagesPreview/imagen__preview__1.PNG)
 
 ## Tecnologías Utilizadas
