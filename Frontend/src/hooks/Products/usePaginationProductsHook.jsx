@@ -2,6 +2,9 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
+//Utils
+import { URL_PRODUCTS_QUERY } from "../../utils/UrlPage";
+
 const usePaginationProductsHook = ({ totalItems, itemsPerPage }) => {
   const { page, filter, categoria } = useParams();
   const navigate = useNavigate();
@@ -30,7 +33,7 @@ const usePaginationProductsHook = ({ totalItems, itemsPerPage }) => {
   }, [page, totalPages, currentPage]);
 
   useEffect(() => {
-    const dynamicURL = `/productos/filter/query/${categoria}/page/${currentPage}`;
+    const dynamicURL = `${URL_PRODUCTS_QUERY}/${categoria}/page/${currentPage}`;
     navigate(dynamicURL, { replace: true });
   }, [currentPage, navigate, filter, categoria]);
 

@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 // JSONs
 import { CategoriesFilters } from "../../services/Jsons/CategoriesFilters/CategoriesFilters";
 
+//Utils
+import { URL_PRODUCTS_QUERY } from "../../utils/UrlPage";
+
 export default function useCategoriesFiltersHook() {
   const navigate = useNavigate();
   const { categoria, page } = useParams();
@@ -19,19 +22,17 @@ export default function useCategoriesFiltersHook() {
     // Solo navegar si la categoría seleccionada es diferente a la actual
     if (categoryName !== selectedCategory) {
       setSelectedCategory(categoryName);
-      navigate(
-        `/productos/filter/query/${checkTextCategory}/page/${page || 1}`
-      );
+      navigate(`${URL_PRODUCTS_QUERY}/${checkTextCategory}/page/${page || 1}`);
     } else {
       setSelectedCategory("");
-      navigate(`/productos/filter/query/${categoria}/page/${page || 1}`);
+      navigate(`${URL_PRODUCTS_QUERY}/${categoria}/page/${page || 1}`);
     }
   };
 
   // Navegar al cargar la página según la categoría seleccionada
   useEffect(() => {
     setSelectedCategory(categoria);
-    navigate(`/productos/filter/query/${categoria}/page/${page || 1}`);
+    navigate(`${URL_PRODUCTS_QUERY}/${categoria}/page/${page || 1}`);
   }, [navigate, categoria, page]);
 
   return {

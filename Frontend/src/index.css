@@ -3946,6 +3946,67 @@ body{
   }
 }
 
+/*Page 404*/
+.container__404__page{
+  width: 1720px;
+  margin: 0 auto;
+  height: 100%;
+  padding:15px 0px 15px 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 20px;
+
+  .container__404__page__figure{ 
+    width: 700px;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+
+    .container__404__page__figure__img{
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 12px;
+    }
+
+    .container__404__page__figure__figcaption{
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      gap: 20px;
+
+      .container__404__page__figure__figcaption__h1{
+        font-size: 45px;
+        font-weight: bold;
+        color:var(--color--primary);
+      }
+
+      .container__404__page__figure__figcaption__link{
+        text-decoration: none;
+        color:var(--color--primary);
+
+        &:hover{
+          text-decoration: underline;
+        }
+
+        .container__404__page__figure__figcaption__h2{
+          font-size: 20px;
+          font-weight: bold;
+          color:var(--color--primary);
+        }
+      }
+    }
+  }
+}
+
 /*Css Animations*/
 @keyframes CarrouselTranslateMas {
   0% {

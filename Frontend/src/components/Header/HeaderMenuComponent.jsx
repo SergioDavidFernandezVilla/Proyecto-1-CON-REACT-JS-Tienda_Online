@@ -15,7 +15,7 @@ import data2 from "../../services/Jsons/ProductsImagen";
 import data3 from "../../services/Jsons/GalleyProductsImagen";
 
 //Utils
-import { URL_PRODUCTS } from "../../utils/UrlPage";
+import { URL_BASE_PRODUCT } from "../../utils/UrlPage";
 
 export default function HeaderMenuComponent() {
   const ArrayProducts = [...data1, ...data2, ...data3];
@@ -48,7 +48,7 @@ export default function HeaderMenuComponent() {
           </li>
           <li className="header1__menu__nav__list__item_li">
             <Link
-              to={`/productos/filter/query/all/page/1`}
+              to={`${URL_BASE_PRODUCT}`}
               className="header1__menu__nav__list__item__link"
             >
               Products

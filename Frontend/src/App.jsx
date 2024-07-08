@@ -11,23 +11,14 @@ import ProductDetailPage from "./pages/ProductDetails/ProductDetailPage";
 import NotFoundPage from "./pages/NotFound/NotFoundPage";
 
 //Utils
-import {
-  URL_PRODUCTS,
-  URL_PRODUCTS_FILTER,
-  URL_PRODUCTS_CATEGORY,
-  URL_PRODUCTS_PAGE,
-  URL_PRODUCT_DETAIL,
-} from "./utils/UrlPage";
+import { URL_PRODUCTS_SLUG, URL_PRODUCT_DETAIL } from "./utils/UrlPage";
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <Routes>
-          <Route
-            path={`/productos/filter/query/:categoria/page/:page`}
-            element={<ProductsPage />}
-          />
+          <Route path={`${URL_PRODUCTS_SLUG}`} element={<ProductsPage />} />
           <Route
             path="/products/producto-popular-9"
             element={<ProductsPage />}
