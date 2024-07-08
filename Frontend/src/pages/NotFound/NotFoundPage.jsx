@@ -11,7 +11,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 //Icons
-import Imagen404 from "../../assets/icons/404/error_404.svg";
+import Icon404 from "../../assets/icons/404/error_404.svg";
 
 export default function NotFoundPage() {
   const ArrayProducts = [...data1, ...data2, ...data3];
@@ -24,7 +24,7 @@ export default function NotFoundPage() {
       <div className="container__404__page">
         <figure className="container__404__page__figure">
           <img
-            src={Imagen404}
+            src={Icon404}
             alt="Error 404"
             className="container__404__page__figure__img"
           />

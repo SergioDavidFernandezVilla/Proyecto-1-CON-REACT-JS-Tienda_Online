@@ -9,6 +9,7 @@
 ## 📸 Vista previa del proyecto^^ 👀
 ### Una vez que se haya completado el proyecto, se hará un videotutorial para explicar el funcionamiento de la aplicación y los pasos que se han seguido para desarrollarla.
 ![Vista previa del proyecto 👀](Frontend/public/imagesPreview/imagen__preview__1.PNG)
+![Vista previa del proyecto en la pagina 404 👀](Frontend/public/imagesPreview/imagen__preview__error.PNG)
 
 ## Tecnologías Utilizadas
 
