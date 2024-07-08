@@ -1,38 +1,42 @@
-//Dependencies
-import { useNavigate } from "react-router-dom";
+// Dependencies
+import { useNavigate, useParams } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-//Utils
-import {
-  URL_PRODUCTS,
-  URL_PRODUCTS_CATEGORY,
-  URL_PRODUCTS_PAGE,
-} from "../../utils/UrlPage";
+// JSONs
+import { CategoriesFilters } from "../../services/Jsons/CategoriesFilters/CategoriesFilters";
 
 export default function useCategoriesFiltersHook() {
   const navigate = useNavigate();
+  const { categoria, page } = useParams();
+  const [selectedCategory, setSelectedCategory] = useState("");
 
-  const handleClick = (e, categoryName) => {
-    const checkboxes = document.getElementsByName("categorias");
+  const handleClick = (categoryName) => {
     const checkTextCategory = categoryName
       .trim()
       .toLowerCase()
-      .replaceAll(" ", "-", " ", "-");
+      .replaceAll(" ", "-");
 
-    checkboxes.forEach((checkbox) => {
-      if (checkbox.id !== e.target.id) {
-        checkbox.checked = false;
-      }
-    });
-
-    if (e.target.checked) {
-      const URL = `${URL_PRODUCTS}${URL_PRODUCTS_CATEGORY}/${checkTextCategory}${URL_PRODUCTS_PAGE}`;
-      navigate(`${URL}1`);
+    // Solo navegar si la categoría seleccionada es diferente a la actual
+    if (categoryName !== selectedCategory) {
+      setSelectedCategory(categoryName);
+      navigate(
+        `/productos/filter/query/${checkTextCategory}/page/${page || 1}`
+      );
     } else {
-      console.log(`Deseleccionado: ${checkTextCategory}`);
+      setSelectedCategory("");
+      navigate(`/productos/filter/query/${categoria}/page/${page || 1}`);
     }
   };
 
+  // Navegar al cargar la página según la categoría seleccionada
+  useEffect(() => {
+    setSelectedCategory(categoria);
+    navigate(`/productos/filter/query/${categoria}/page/${page || 1}`);
+  }, [navigate, categoria, page]);
+
   return {
+    selectedCategory,
     handleClick,
+    CategoriesFilters, // Esto permite que el componente acceda directamente al JSON de categorías
   };
 }

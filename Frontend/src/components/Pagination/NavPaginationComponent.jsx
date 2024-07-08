@@ -2,11 +2,7 @@
 import { Link, useNavigate, useParams } from "react-router-dom";
 
 // Utils
-import {
-  URL_PRODUCTS,
-  URL_PRODUCTS_CATEGORY,
-  URL_PRODUCTS_PAGE,
-} from "../../utils/UrlPage";
+import { URL_PRODUCTS_RESULT } from "../../utils/UrlPage";
 
 export default function NavPaginationComponent({
   totalPages,
@@ -17,9 +13,9 @@ export default function NavPaginationComponent({
   handleClickAumentPagePrevious,
 }) {
   const navigate = useNavigate();
-  const { categoria } = useParams();
+  const { categoria, filter, page } = useParams();
 
-  const URL = `${URL_PRODUCTS}${URL_PRODUCTS_CATEGORY}/${categoria}${URL_PRODUCTS_PAGE}`;
+  const URL = `/productos/filter/${filter}/categoria/${categoria}/page/${page}`;
 
   return (
     <nav className="container__products__filter__page__nav">

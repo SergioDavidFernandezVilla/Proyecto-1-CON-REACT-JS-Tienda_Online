@@ -2,7 +2,7 @@
 import "./App.css";
 
 // Dependencies
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
 
 // Pages Components
 import HomePage from "./pages/Home/HomePage";
@@ -13,8 +13,8 @@ import NotFoundPage from "./pages/NotFound/NotFoundPage";
 //Utils
 import {
   URL_PRODUCTS,
+  URL_PRODUCTS_FILTER,
   URL_PRODUCTS_CATEGORY,
-  URL_PRODUCTS_CATEGORY_ID,
   URL_PRODUCTS_PAGE,
   URL_PRODUCT_DETAIL,
 } from "./utils/UrlPage";
@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route
-            path={`${URL_PRODUCTS}${URL_PRODUCTS_CATEGORY}${URL_PRODUCTS_CATEGORY_ID}${URL_PRODUCTS_PAGE}:id`}
+            path={`/productos/filter/query/:categoria/page/:page`}
             element={<ProductsPage />}
           />
           <Route

@@ -15,17 +15,11 @@ import data2 from "../../services/Jsons/ProductsImagen";
 import data3 from "../../services/Jsons/GalleyProductsImagen";
 
 //Utils
-import {
-  URL_PRODUCTS,
-  URL_PRODUCTS_CATEGORY,
-  URL_PRODUCTS_PAGE,
-} from "../../utils/UrlPage";
+import { URL_PRODUCTS } from "../../utils/UrlPage";
 
 export default function HeaderMenuComponent() {
   const ArrayProducts = [...data1, ...data2, ...data3];
   const [data, setData] = useState(ArrayProducts);
-
-  const URL = `${URL_PRODUCTS}${URL_PRODUCTS_CATEGORY}/all${URL_PRODUCTS_PAGE}`;
 
   return (
     <header className="header1__menu">
@@ -54,7 +48,7 @@ export default function HeaderMenuComponent() {
           </li>
           <li className="header1__menu__nav__list__item_li">
             <Link
-              to={`${URL}1`}
+              to={`/productos/filter/query/all/page/1`}
               className="header1__menu__nav__list__item__link"
             >
               Products
