@@ -1,5 +1,6 @@
 //Dependencies
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 //Icons
 import {
@@ -11,25 +12,37 @@ import {
 //Components
 import CardProduct from "../products/CardProduct/CardProductComponent";
 
+//Hooks
+import { usePagination } from "../../../hooks/CardsCarrousel/usePaginationHook";
+
 export default function CardsProductComponent({
   title,
   jsonAPI,
-  handleClickPrev,
-  handleClickNext,
-  handleClickPage,
-  currentPage,
-  isOpen,
-  classNameCarrousel,
-  classNamePopular,
+  id,
+  etiqueta,
 }) {
+  const { currentPage, nextPage, prevPage, startIndex, endIndex, className } =
+    usePagination(0, 5, jsonAPI.length, etiqueta); // Mostrar 5 elementos por página
+
+  const [active, setActive] = useState(false);
+
+  const handleNextClick = () => {
+    setActive(true);
+    nextPage(); // Llama a la función de paginación para el siguiente
+  };
+
+  const handlePrevClick = () => {
+    setActive(false);
+    prevPage(); // Llama a la función de paginación para el anterior
+  };
+
   return (
-    <div className={`container_products_interesantes`}>
+    <div className="container_products_interesantes">
       <div className="container__home__products">
         <header className="home__products__container__header">
           <h4 className="home__products__container__header__title_h4">
             {title}
           </h4>
-
           <Link
             className="home__products__container__header__link"
             to="/products"
@@ -40,14 +53,16 @@ export default function CardsProductComponent({
         </header>
 
         <div className="container__carousel__products__div">
-          <Link className="link__carousel__arrows" onClick={handleClickPrev}>
+          <Link className="link__carousel__arrows" onClick={handlePrevClick}>
             <MdArrowCircleLeft className="icon__carousel__arrows" />
           </Link>
 
           <section
-            className={classNamePopular ? classNamePopular : classNameCarrousel}
+            className={`container__carrousel ${
+              active ? "active" : "defaultPrev"
+            }`}
           >
-            {jsonAPI.map((product) => (
+            {jsonAPI.slice(startIndex, endIndex).map((product) => (
               <CardProduct
                 key={product.id}
                 title={product.nombre}
@@ -62,7 +77,7 @@ export default function CardsProductComponent({
             ))}
           </section>
 
-          <Link className="link__carousel__arrows" onClick={handleClickNext}>
+          <Link className="link__carousel__arrows" onClick={handleNextClick}>
             <MdArrowCircleRight className="icon__carousel__arrows" />
           </Link>
         </div>

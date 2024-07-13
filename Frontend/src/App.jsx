@@ -2,7 +2,7 @@
 import "./App.css";
 
 // Dependencies
-import { BrowserRouter, Routes, Route, useParams } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 // Pages Components
 import HomePage from "./pages/Home/HomePage";

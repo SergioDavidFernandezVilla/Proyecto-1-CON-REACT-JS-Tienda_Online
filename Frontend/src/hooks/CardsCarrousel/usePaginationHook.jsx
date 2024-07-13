@@ -5,7 +5,8 @@ export function usePagination(
   itemsPerPage,
   totalItems,
   baseClassName,
-  carouselType // Nuevo parámetro para identificar el tipo de carrusel
+  carouselType, // Nuevo parámetro para identificar el tipo de carrusel
+  etiqueta // Nueva prop para comparación de etiqueta
 ) {
   const [currentPage, setCurrentPage] = useState(initialPage);
   const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -14,13 +15,19 @@ export function usePagination(
   const endIndex = Math.min(startIndex + itemsPerPage, totalItems);
 
   const nextPage = () => {
-    setCurrentPage((prevPage) =>
-      prevPage < totalPages - 1 ? prevPage + 1 : prevPage
-    );
+    if (etiqueta === etiqueta) {
+      // Comprueba la condición de etiqueta
+      setCurrentPage((prevPage) =>
+        prevPage < totalPages - 1 ? prevPage + 1 : prevPage
+      );
+    }
   };
 
   const prevPage = () => {
-    setCurrentPage((prevPage) => (prevPage > 0 ? prevPage - 1 : prevPage));
+    if (etiqueta === etiqueta) {
+      // Comprueba la condición de etiqueta
+      setCurrentPage((prevPage) => (prevPage > 0 ? prevPage - 1 : prevPage));
+    }
   };
 
   const goToPage = (page) => setCurrentPage(page);

@@ -3,47 +3,10 @@ import HeaderMenuComponent from "../../components/Header/HeaderMenuComponent";
 import CardsProductComponent from "../../components/Cards/CardProducts/CardsProductComponent";
 import GalleryComponent from "../../components/Cards/Gallery/GalleryComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
-
-// JSONs
 import GalleyProductsImagen from "../../services/Jsons/GalleyProductsImagen";
-import productsPopularData from "../../services/Jsons/productsPopularData";
-import productsImagen from "../../services/Jsons/ProductsImagen";
-
-// Hooks
-import { usePagination } from "../../hooks/CardsCarrousel/usePaginationHook";
+import carrousel from "../../services/Jsons/CarrouselCards/carrousel";
 
 export default function HomePage() {
-  const classNameDefault = "container_products_interesantes__carrousel";
-  const classNameEdit1 = `${classNameDefault} popular`;
-
-  const {
-    currentPage: currentPageProducts,
-    nextPage: nextPageProducts,
-    prevPage: prevPageProducts,
-    goToPage: goToPageProducts,
-    startIndex: startIndexProducts,
-    endIndex: endIndexProducts,
-    totalPages: totalPagesProducts,
-    className: classNameProducts,
-  } = usePagination(0, 5, productsImagen.length, classNameDefault, "");
-
-  const {
-    currentPage: currentPagePopular,
-    nextPage: nextPagePopular,
-    prevPage: prevPagePopular,
-    goToPage: goToPagePopular,
-    startIndex: startIndexPopular,
-    endIndex: endIndexPopular,
-    totalPages: totalPagesPopular,
-    className: classNamePopular,
-  } = usePagination(
-    0,
-    5,
-    productsPopularData.length,
-    classNameDefault,
-    "popular"
-  );
-
   return (
     <>
       <HeaderMenuComponent />
@@ -66,38 +29,15 @@ export default function HomePage() {
           ))}
         </div>
 
-        <CardsProductComponent
-          title={"Productos que podrían gustarte:"}
-          jsonAPI={productsImagen.slice(startIndexProducts, endIndexProducts)}
-          handleClickPrev={prevPageProducts}
-          handleClickNext={nextPageProducts}
-          handleClickPage={goToPageProducts}
-          currentPage={currentPageProducts}
-          classNameCarrousel={classNameProducts}
-        />
-
-        <CardsProductComponent
-          title={"Productos más populares:"}
-          jsonAPI={productsPopularData.slice(
-            startIndexPopular,
-            endIndexPopular
-          )}
-          handleClickPrev={prevPagePopular}
-          handleClickNext={nextPagePopular}
-          handleClickPage={goToPagePopular}
-          currentPage={currentPagePopular}
-          classNamePopular={classNamePopular}
-        />
-
-        <CardsProductComponent
-          title={"Productos que podrían gustarte:"}
-          jsonAPI={productsImagen.slice(startIndexProducts, endIndexProducts)}
-          handleClickPrev={prevPageProducts}
-          handleClickNext={nextPageProducts}
-          handleClickPage={goToPageProducts}
-          currentPage={currentPageProducts}
-          classNameCarrousel={classNameProducts}
-        />
+        {carrousel.map((carousel) => (
+          <CardsProductComponent
+            key={carousel.id}
+            id={carousel.id}
+            title={carousel.name}
+            jsonAPI={carousel.ArrayCarrousel}
+            etiqueta={carousel.etiqueta}
+          />
+        ))}
       </div>
 
       <FooterComponent />
