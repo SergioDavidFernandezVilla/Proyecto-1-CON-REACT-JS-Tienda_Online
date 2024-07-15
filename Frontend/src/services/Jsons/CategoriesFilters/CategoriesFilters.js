@@ -1,7 +1,7 @@
 export const CategoriesFilters = [
   {
     id: 1,
-    name: "Todos los productos",
+    name: "all",
   },
   {
     id: 2,

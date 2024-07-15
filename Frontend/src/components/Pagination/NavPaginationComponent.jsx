@@ -15,7 +15,7 @@ export default function NavPaginationComponent({
   const navigate = useNavigate();
   const { categoria, filter, page } = useParams();
 
-  const URL = `/productos/filter/${filter}/categoria/${categoria}/page/${page}`;
+  const URL = `/productos/filter/query/${categoria}/page/`;
 
   return (
     <nav className="container__products__filter__page__nav">
@@ -63,9 +63,7 @@ export default function NavPaginationComponent({
               </Link>
             </button>
           </div>
-        ) : (
-          <p>No hay más productos</p>
-        )}
+        ) : null}
       </div>
     </nav>
   );

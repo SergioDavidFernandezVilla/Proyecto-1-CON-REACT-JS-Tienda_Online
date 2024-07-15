@@ -1,6 +1,12 @@
-//Dependencies
+//Icons
 import { MdOutlineSearch } from "react-icons/md";
-import { Link } from "react-router-dom";
+
+//Dependencies
+import { Link, useParams, useNavigate } from "react-router-dom";
+
+//Utils
+import { URL_PRODUCTS_SLUG } from "../../../../../utils/UrlPage";
+
 export default function ResultSearchComponent({
   id,
   nombre,
@@ -15,12 +21,14 @@ export default function ResultSearchComponent({
     handleClickClearSearch();
   };
 
+  const navigate = useNavigate();
+
   return (
     <>
       <div className="item__search_menu__open__div" key={id}>
         <Link
           className="item__search_menu__open__div__articulos__link"
-          to={`/products/producto/${slug}`}
+          to={`/productos/filter/query/${slug}/page/1`}
           onClick={handleClickLink} // Manejar el clic en el enlace
         >
           <MdOutlineSearch className="item__search_menu__open__div__articulos__p__icon" />

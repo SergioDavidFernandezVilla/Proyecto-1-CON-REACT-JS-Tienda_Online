@@ -2,11 +2,14 @@
 import { MdOutlineSearch } from "react-icons/md";
 
 //Dependencies
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useContext } from "react";
 
 //Components
 import OptionsFilterMenu from "../OptionFilterMenu/OptionsFilterMenuComponent";
 import ResultsSearchMenu from "../Results/ResultsSearch/ResultsSearchMenuComponent";
+
+//Context
+import { ProductsFilterContext } from "../../../../context/useContextProductsFilter";
 
 //JSONs
 import data from "../../../../services/Jsons/productsPopularData";
@@ -15,8 +18,9 @@ import data2 from "../../../../services/Jsons/ProductsImagen";
 export default function SearchMenuComponent() {
   const [isOptionOpen, setIsOptionOpen] = useState(false);
   const [isOpenSearch, setIsOpenSearch] = useState(false);
-  const [query, setQuery] = useState("");
   const [results, setResults] = useState([]);
+
+  const { searchQuery, setSearchQuery } = useContext(ProductsFilterContext);
 
   const searchInputRef = useRef(null);
 
@@ -60,11 +64,11 @@ export default function SearchMenuComponent() {
       pattern.test(searchTextClean) && // Validar el texto limpio
       !forbiddenPatterns.test(searchText) // Verificar si no hay patrones no permitidos en el texto original
     ) {
-      setQuery(searchTextClean); // Actualizar el estado de query con el texto limpio
+      setSearchQuery(searchTextClean); // Actualizar el estado de query con el texto limpio
       setIsOpenSearch(true);
       search(searchTextClean); // Realizar la búsqueda con el texto limpio
     } else {
-      setQuery(searchTextClean); // Actualizar el estado de query con el texto limpio
+      setSearchQuery(searchTextClean); // Actualizar el estado de query con el texto limpio
       setIsOpenSearch(false);
       setResults([]); // Limpiar los resultados si el texto no es válido
     }
@@ -95,7 +99,7 @@ export default function SearchMenuComponent() {
   };
 
   const handleClickClearSearch = () => {
-    setQuery("");
+    setSearchQuery("");
     setIsOpenSearch(false);
     setResults([]);
   };
@@ -120,7 +124,7 @@ export default function SearchMenuComponent() {
             type="search"
             placeholder="Buscar productos...."
             className="header1__menu__nav__form__div__input"
-            value={query}
+            value={searchQuery}
             onChange={handleChangeSearch}
             minLength={3}
             maxLength={100}

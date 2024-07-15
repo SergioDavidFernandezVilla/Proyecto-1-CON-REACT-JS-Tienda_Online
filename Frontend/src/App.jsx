@@ -19,10 +19,6 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path={`${URL_PRODUCTS_SLUG}`} element={<ProductsPage />} />
-          <Route
-            path="/products/producto-popular-9"
-            element={<ProductsPage />}
-          />
 
           <Route path={URL_PRODUCT_DETAIL} element={<ProductDetailPage />} />
 

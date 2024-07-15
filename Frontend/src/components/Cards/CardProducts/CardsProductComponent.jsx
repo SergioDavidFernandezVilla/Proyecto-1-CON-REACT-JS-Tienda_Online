@@ -1,6 +1,6 @@
 //Dependencies
 import { Link } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 //Icons
 import {
@@ -11,8 +11,6 @@ import {
 
 //Components
 import CardProduct from "../products/CardProduct/CardProductComponent";
-
-//Hooks
 import { usePagination } from "../../../hooks/CardsCarrousel/usePaginationHook";
 
 export default function CardsProductComponent({
@@ -21,8 +19,12 @@ export default function CardsProductComponent({
   id,
   etiqueta,
 }) {
-  const { currentPage, nextPage, prevPage, startIndex, endIndex, className } =
-    usePagination(0, 5, jsonAPI.length, etiqueta); // Mostrar 5 elementos por página
+  const { nextPage, prevPage, startIndex, endIndex, className } = usePagination(
+    0,
+    5,
+    jsonAPI.length,
+    etiqueta
+  ); // Mostrar 5 elementos por página
 
   const [active, setActive] = useState(false);
 

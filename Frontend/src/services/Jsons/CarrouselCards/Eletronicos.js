@@ -39,8 +39,8 @@ const images = {
 const productsElectronicos = [
   {
     id: 1,
-    slug: "XD",
-    nombre: "XD",
+    slug: "mesa-madera-grande",
+    nombre: "mesa madera grande",
     descripcion:
       "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ullam, quod laborum deserunt.",
     categoria: "Hogar",

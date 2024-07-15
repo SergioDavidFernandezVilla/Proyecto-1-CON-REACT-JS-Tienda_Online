@@ -1,6 +1,6 @@
 //Dependencies
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams, useNavigate } from "react-router-dom";
 
 //Icons
 import { MdShoppingCart, MdSettings } from "react-icons/md";
@@ -20,6 +20,11 @@ import { URL_BASE_PRODUCT } from "../../utils/UrlPage";
 export default function HeaderMenuComponent() {
   const ArrayProducts = [...data1, ...data2, ...data3];
   const [data, setData] = useState(ArrayProducts);
+
+  const { slug, categoria } = useParams();
+  const navigate = useNavigate();
+
+  console.log(categoria);
 
   return (
     <header className="header1__menu">

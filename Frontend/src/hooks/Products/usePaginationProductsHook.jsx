@@ -1,19 +1,25 @@
 // Dependencies
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-//Utils
+// Utils
 import { URL_PRODUCTS_QUERY } from "../../utils/UrlPage";
 
+// Context
+import { ProductsFilterContext } from "../../context/useContextProductsFilter";
+
 const usePaginationProductsHook = ({ totalItems, itemsPerPage }) => {
-  const { page, filter, categoria } = useParams();
+  const { page, categoria } = useParams();
   const navigate = useNavigate();
+
+  const { searchQuery, setSearchQuery, totalPages, setTotalPages } = useContext(
+    ProductsFilterContext
+  );
 
   const [currentPage, setCurrentPage] = useState(() => {
     const pageNumber = parseInt(page, 10);
     return !isNaN(pageNumber) && pageNumber > 0 ? pageNumber : 1;
   });
-  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const totalPages = Math.ceil(totalItems / itemsPerPage);
@@ -35,7 +41,7 @@ const usePaginationProductsHook = ({ totalItems, itemsPerPage }) => {
   useEffect(() => {
     const dynamicURL = `${URL_PRODUCTS_QUERY}/${categoria}/page/${currentPage}`;
     navigate(dynamicURL, { replace: true });
-  }, [currentPage, navigate, filter, categoria]);
+  }, [currentPage, navigate, categoria]);
 
   const handleClickAumentPage = () => {
     if (currentPage < totalPages) {
