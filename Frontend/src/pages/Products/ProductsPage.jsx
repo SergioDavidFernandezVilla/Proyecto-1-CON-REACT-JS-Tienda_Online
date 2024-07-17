@@ -74,6 +74,10 @@ export default function ProductsPage() {
     if (searchQuery !== "" && Nombre === "all") {
       setSearchQuery(searchQuery);
     }
+
+    if (filterProducts.length === 0) {
+      setSearchQueryText("No se encontraron resultados");
+    }
   }, [searchQuery, Nombre, searchQueryText]);
 
   const MostrarMas = filterProducts.length <= 5;

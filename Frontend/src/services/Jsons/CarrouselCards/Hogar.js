@@ -39,16 +39,16 @@ const images = {
 const productsHogar = [
   {
     id: 1,
-    slug: "apoco-shi",
-    nombre: "APOCO SHI",
+    slug: "producto-dos",
+    nombre: "Producto Dos",
     descripcion:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ullam, quod laborum deserunt.",
-    categoria: "Hogar",
-    marca: "Marca A",
-    precio: 100,
-    rating: 4.5,
+      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio ullam, quod laborum.",
+    categoria: "Electrónica",
+    marca: "Marca B",
+    precio: 200,
+    rating: 4.0,
     estrellas: 4,
-    stock: 10,
+    stock: 3,
     imagen: images.imagenMesaMadera,
   },
   {

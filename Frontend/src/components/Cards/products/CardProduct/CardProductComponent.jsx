@@ -1,5 +1,5 @@
 //Dependencies
-import React, { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 //Icons
@@ -12,7 +12,11 @@ import {
 //Components
 import OptionsCard from "../OptionCard/OptionsCardComponent";
 
+//Context
+import { ShoppingCart } from "../../../../context/useContextShopping";
+
 export default function CardProduct({
+  id,
   title,
   price,
   image,
@@ -24,6 +28,8 @@ export default function CardProduct({
 }) {
   const [isOpen, setIsOpen] = useState(false);
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const { handleAddToCart } = useContext(ShoppingCart);
 
   const handleClick = () => {
     setIsOpen(!isOpen);
@@ -39,8 +45,21 @@ export default function CardProduct({
       ? description.slice(0, 86) + ". Ver más..."
       : description;
 
+  // Crear un objeto product con los datos del producto seleccionado
+  const product = {
+    id,
+    title,
+    price,
+    image,
+    description,
+    slug,
+    stock,
+    marca,
+    categoria,
+  };
+
   return (
-    <article className="card__product_article">
+    <article className="card__product_article" key={id}>
       <Link
         to={`/productos/marca/${marca}/categoria/${categoria}/producto/${slug}`}
         className="card__product_article__link__detail"
@@ -83,7 +102,10 @@ export default function CardProduct({
         </figure>
       </Link>
       <footer className="card__product_article__figure__div__footer">
-        <button className="card__product_article__figure__div__button">
+        <button
+          className="card__product_article__figure__div__button"
+          onClick={() => handleAddToCart(product)}
+        >
           <MdLocalGroceryStore className="card__product_article__figure__div__button_compra" />
           Add to cart
         </button>

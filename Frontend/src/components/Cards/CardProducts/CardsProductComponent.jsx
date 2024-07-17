@@ -75,6 +75,7 @@ export default function CardsProductComponent({
                 stock={product.stock}
                 marca={product.marca}
                 categoria={product.categoria}
+                id={product.id}
               />
             ))}
           </section>
