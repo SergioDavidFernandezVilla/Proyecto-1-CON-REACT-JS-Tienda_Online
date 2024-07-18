@@ -7,13 +7,18 @@ import GalleyProductsImagen from "../../services/Jsons/GalleyProductsImagen";
 import carrousel from "../../services/Jsons/CarrouselCards/carrousel";
 import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
 
-//Hooks
-import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
+//Dependencies
+import { useContext } from "react";
+
+//Context
+import { ContextMenu } from "../../context/shopContext/usoContextMenu";
 
 export default function HomePage() {
-  const { isOpenModalConfiguracion, handleClickModalConfiguracion } =
-    useModalConfigHook();
-
+  const {
+    isOpenModalConfiguracion,
+    setIsOpenModalConfiguracion,
+    handleClickModalConfiguracion,
+  } = useContext(ContextMenu);
   return (
     <>
       <HeaderMenuComponent

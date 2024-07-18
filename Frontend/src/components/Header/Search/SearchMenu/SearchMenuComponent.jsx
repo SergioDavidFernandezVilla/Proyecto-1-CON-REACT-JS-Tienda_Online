@@ -109,47 +109,45 @@ export default function SearchMenuComponent() {
   };
 
   return (
-    <div className="container__search_menu__nav__div">
-      <form className="header1__menu__nav__form" name="form__search">
-        <div className="header1__menu__nav__form__div">
-          <button
-            className="header1__menu__nav__form__div__button_search"
-            onClick={() => setIsOpenSearch(!isOpenSearch)}
-          >
-            <MdOutlineSearch className="header1__menu__nav__form__div__button__search__icon" />
-          </button>
-          <input
-            name="form__search__input"
-            ref={searchInputRef}
-            type="search"
-            placeholder="Buscar productos...."
-            className="header1__menu__nav__form__div__input"
-            value={searchQuery}
-            onChange={handleChangeSearch}
-            minLength={3}
-            maxLength={100}
-            pattern={pattern.source} // Asignar la expresión regular como string al pattern
+    <form className="header1__menu__nav__form" name="form__search">
+      <div className="header1__menu__nav__form__div">
+        <button
+          className="header1__menu__nav__form__div__button_search"
+          onClick={() => setIsOpenSearch(!isOpenSearch)}
+        >
+          <MdOutlineSearch className="header1__menu__nav__form__div__button__search__icon" />
+        </button>
+        <input
+          name="form__search__input"
+          ref={searchInputRef}
+          type="search"
+          placeholder="Buscar productos...."
+          className="header1__menu__nav__form__div__input"
+          value={searchQuery}
+          onChange={handleChangeSearch}
+          minLength={3}
+          maxLength={100}
+          pattern={pattern.source} // Asignar la expresión regular como string al pattern
+        />
+
+        <button
+          className="header1__menu__nav__form__div__button"
+          onClick={handleOptionClick}
+        >
+          Filtrar
+        </button>
+
+        {!isOpenSearch && isOptionOpen && <OptionsFilterMenu />}
+
+        {isOpenSearch && (
+          <ResultsSearchMenu
+            data={results}
+            handleClickClearSearch={handleClickClearSearch}
+            handleClickStop={handleClickStop}
+            ContenedorResultsSearchRef={ContenedorResultsSearchRef}
           />
-
-          <button
-            className="header1__menu__nav__form__div__button"
-            onClick={handleOptionClick}
-          >
-            Filtrar
-          </button>
-
-          {!isOpenSearch && isOptionOpen && <OptionsFilterMenu />}
-
-          {isOpenSearch && (
-            <ResultsSearchMenu
-              data={results}
-              handleClickClearSearch={handleClickClearSearch}
-              handleClickStop={handleClickStop}
-              ContenedorResultsSearchRef={ContenedorResultsSearchRef}
-            />
-          )}
-        </div>
-      </form>
-    </div>
+        )}
+      </div>
+    </form>
   );
 }
