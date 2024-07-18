@@ -1,10 +1,4 @@
-import { createContext, useContext, useState } from "react";
-
-//Jsons
-import data from "../services/Jsons/productsPopularData";
-import data2 from "../services/Jsons/ProductsImagen";
-import data3 from "../services/Jsons/GalleyProductsImagen";
-import data4 from "../services/Jsons/CarrouselCards/carrousel";
+import { createContext, useState } from "react";
 
 export const ShoppingCart = createContext();
 
@@ -12,6 +6,7 @@ export const ShoppingCartProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [newCart, setNewCart] = useState([]);
   const [totalCart, setTotalCart] = useState(0);
+  const [cantidad, setCantidad] = useState(1);
 
   const handleAddToCart = (product) => {
     // Verificar si el producto ya está en el carrito
@@ -25,11 +20,12 @@ export const ShoppingCartProvider = ({ children }) => {
   };
 
   const handleRemoveFromCart = (product, e) => {
-    e.stopPropagation();
+    e.stopPropagation(); // Evitar que se dispare el evento click
 
     const updatedCart = newCart.filter(
-      (cartProduct) => cartProduct.id !== product.id // Filtra el producto seleccionado
-    );
+      (cartProduct) => cartProduct.id !== product.id
+    ); // Filtra el producto seleccionado
+
     setNewCart(updatedCart);
   };
 
@@ -39,18 +35,29 @@ export const ShoppingCartProvider = ({ children }) => {
     setNewCart([]);
   };
 
+  const updateQuantity = (productId, newQuantity) => {
+    const updatedCart = newCart.map(
+      (item) =>
+        item.id === productId ? { ...item, quantity: newQuantity } : item // Cambia la cantidad del producto seleccionado en el carrito
+    );
+    setNewCart(updatedCart);
+  };
+
   return (
     <ShoppingCart.Provider
       value={{
-        cart,
-        setCart,
-        handleAddToCart,
-        handleRemoveFromCart,
-        totalCart,
-        setTotalCart,
-        newCart,
-        setNewCart,
-        handleRemoveAllFromCart,
+        cart, // Establecer el estado del carrito
+        setCart, // Establecer el estado del carrito
+        handleAddToCart, // Función para agregar un producto al carrito
+        handleRemoveFromCart, // Función para remover un producto del carrito
+        totalCart, // Establecer el estado del total del carrito
+        setTotalCart, // Establecer el estado del total del carrito
+        newCart, // Establecer el estado del carrito actual
+        setNewCart, // Establecer el estado del carrito actual
+        handleRemoveAllFromCart, // Función para remover todos los productos del carrito
+        cantidad, // Establecer el estado de la cantidad del carrito
+        setCantidad, // Establecer el estado de la cantidad del carrito
+        updateQuantity, // Función para actualizar la cantidad del producto seleccionado
       }}
     >
       {children}

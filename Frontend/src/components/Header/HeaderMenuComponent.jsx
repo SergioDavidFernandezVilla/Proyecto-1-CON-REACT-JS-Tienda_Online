@@ -3,14 +3,14 @@ import { useState, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Icons
-import { MdShoppingCart, MdSettings, MdShoppingBasket } from "react-icons/md";
+import { MdShoppingCart, MdSettings } from "react-icons/md";
 
 //Logo Assets
 import LogoTienda from "../../assets/images/logo_tienda.jpg";
 
 //Components
 import SearchMenuComponent from "../Header/Search/SearchMenu/SearchMenuComponent";
-import { ShopCardComponet } from "../ShopCard/ShopCardComponent";
+import { MenuShopCards } from "../ShopCard/MenuShopCards/MenuShopCards";
 
 //Jsons
 import data1 from "../../services/Jsons/productsPopularData";
@@ -28,58 +28,28 @@ export default function HeaderMenuComponent() {
   const [data, setData] = useState(ArrayProducts);
   const [isOpenShopCart, setIsOpenShopCart] = useState(false);
 
-  const { cart, newCart, totalCart, setTotalCart } = useContext(ShoppingCart);
+  const { cart, newCart, totalCart, setTotalCart, cantidad, setCantidad } =
+    useContext(ShoppingCart);
 
   const handleClickShopCart = () => {
     setIsOpenShopCart(!isOpenShopCart);
   };
 
-  const TamañoPrecio = newCart.length;
-  const MaxCard = newCart.slice(0, 5);
-
   useEffect(() => {
-    const totalCart = newCart.reduce((acc, product) => acc + product.price, 0);
-    setTotalCart(totalCart);
-  }, [newCart, totalCart]);
+    // Calcular el total del carrito cada vez que cambie la cantidad del producto seleccionado
+    const total = newCart.reduce((acc, product) => {
+      const quantity = product.quantity || 1;
+      return acc + product.price * quantity;
+    }, 0);
 
-  const MenuShortCart = () => {
-    return (
-      // Menu Carrito
-      <div className="container__menu__short__cart">
-        <div className="container__menu__short__cart__content">
-          <header className="container__menu__short__cart__content__header">
-            <h4 className="container__menu__short__cart__content__header__h4">
-              <strong>Tu carrito tiene {TamañoPrecio} productos.</strong>
-            </h4>
+    setTotalCart(total); // Actualizar el total del carrito
 
-            <p className="container__menu__short__cart__content__header__p">
-              Costo total: <strong>${totalCart} MXN</strong>
-            </p>
-          </header>
-
-          <article className="article__cart__container__contents">
-            {ListaShop}
-
-            <footer className="footer__cart__container__contents__buttons">
-              <button className="button__cart__container__contents__1">
-                <MdShoppingCart className="container__menu__short__cart__content__button__icon" />
-                Comprar Ahora
-              </button>
-
-              <Link to="/cart" className="button__cart__container__contents__2">
-                <MdShoppingBasket className="container__menu__short__cart__content__button__icon" />
-                Ver carrito
-              </Link>
-            </footer>
-          </article>
-        </div>
-      </div>
+    const totalCantidad = newCart.reduce(
+      (acc, product) => acc + (product.quantity || 1),
+      0
     );
-  };
-
-  const ListaShop = MaxCard.map((product) => (
-    <ShopCardComponet product={product} key={product.id} />
-  ));
+    setCantidad(totalCantidad); // Actualizar el estado de la cantidad del carrito
+  }, [newCart]); // Utilizar la cantidad actual del carrito para calcular el total
 
   return (
     <header className="header1__menu">
@@ -97,9 +67,7 @@ export default function HeaderMenuComponent() {
             Tienda de Productos
           </span>
         </Link>
-
-        <SearchMenuComponent data={data} />
-
+        <SearchMenuComponent data={data} /> {/* Componente de búsqueda */}
         <ul className="header1__menu__nav__list_ul">
           <li className="header1__menu__nav__list__item_li">
             <Link to="/" className="header1__menu__nav__list__item__link">
@@ -130,7 +98,7 @@ export default function HeaderMenuComponent() {
               Cart
             </Link>
 
-            {isOpenShopCart && <MenuShortCart />}
+            {isOpenShopCart && <MenuShopCards />}
           </li>
 
           <li className="header1__menu__nav__list__item_li">

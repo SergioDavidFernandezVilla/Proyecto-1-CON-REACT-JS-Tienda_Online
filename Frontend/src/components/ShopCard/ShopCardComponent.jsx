@@ -1,36 +1,37 @@
-//Icons
-import { MdRemoveCircle, MdAddCircle, MdDeleteForever } from "react-icons/md";
-
 //Dependencies
-import { useState, useRef, useContext, useEffect } from "react";
+import { useState, useRef, useContext } from "react";
 
 //Context
 import { ShoppingCart } from "../../context/useContextShopping";
 
-export const ShopCardComponet = ({ product }) => {
-  const [totalCartPrevious, setTotalCartPrevious] = useState(0);
-  const [cantidadPrevious, setCantidadPrevious] = useState(0);
-  const [cantidad, setCantidad] = useState(1);
+//Icons
+import { MdRemoveCircle, MdAddCircle, MdDeleteForever } from "react-icons/md";
 
-  const { newCart, handleRemoveFromCart, totalCart, setTotalCart } =
+export const ShopCardComponent = ({ product }) => {
+  const { newCart, handleRemoveFromCart, updateQuantity } =
     useContext(ShoppingCart);
+
+  const [cantidad, setCantidad] = useState(1);
 
   const inputRefCantidad = useRef(null);
 
   const handleClickAumento = () => {
     if (inputRefCantidad.current.value < product.stock) {
-      inputRefCantidad.current.value = cantidad + 1;
-
-      setCantidad(cantidad + 1);
-
-      console.log("productStock", product.stock);
+      const newCantidad = cantidad + 1;
+      inputRefCantidad.current.value = newCantidad;
+      setCantidad(newCantidad);
+      updateQuantity(product.id, newCantidad);
     }
   };
 
   const handleClickMenos = (e) => {
     if (inputRefCantidad.current.value > 1) {
-      inputRefCantidad.current.value = cantidad - 1;
-      setCantidad(cantidad - 1);
+      const newCantidad = cantidad - 1;
+      inputRefCantidad.current.value = newCantidad;
+      setCantidad(newCantidad);
+      updateQuantity(product.id, newCantidad);
+    } else {
+      handleRemoveFromCart(product, e);
     }
   };
 
@@ -52,33 +53,25 @@ export const ShopCardComponet = ({ product }) => {
           <h4 className="container__menu__short__cart__content__item__div__h4">
             {product.title}
           </h4>
-
           <p className="container__menu__short__cart__content__item__div__p">
             <strong>Precio: </strong> ${product.price} MXN
           </p>
-
           <p className="container__menu__short__cart__content__item__div__p">
-            <strong>Disponible:</strong>
-            {product.stock}
+            <strong>Disponible:</strong> {product.stock}
           </p>
         </header>
 
         <div className="container__menu__short__cart__content__item__buttons__stock">
-          {cantidad > 1 ? (
-            <button
-              className="container__menu__short__cart__content__item__div__button"
-              onClick={(e) => handleClickMenos(e, product)}
-            >
+          <button
+            className="container__menu__short__cart__content__item__div__button"
+            onClick={(e) => handleClickMenos(e)}
+          >
+            {cantidad > 1 ? (
               <MdRemoveCircle className="container__menu__short__cart__content__item__div__button__icon" />
-            </button>
-          ) : (
-            <button
-              className="container__menu__short__cart__content__item__div__button"
-              onClick={(e) => handleRemoveFromCart(product, e)}
-            >
+            ) : (
               <MdDeleteForever className="container__menu__short__cart__content__item__div__button__icon__remove" />
-            </button>
-          )}
+            )}
+          </button>
 
           <input
             type="number"
@@ -92,7 +85,7 @@ export const ShopCardComponet = ({ product }) => {
 
           <button
             className="container__menu__short__cart__content__item__div__button"
-            onClick={(e) => handleClickAumento(e, product)}
+            onClick={() => handleClickAumento()}
           >
             <MdAddCircle className="container__menu__short__cart__content__item__div__button__icon" />
           </button>
