@@ -12,8 +12,8 @@ import { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
 //Context
-import { ShoppingCart } from "../../../context/useContextShopping";
-import { ContextMenu } from "../../../context/shopContext/usoContextMenu";
+import { ShoppingCart } from "../../../context/shoppingContext/useContextShopping";
+import { ContextMenu } from "../../../context/MenushopContext/usoContextMenu";
 
 export const HeaderOptionsComponent = () => {
   const {

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext } from "react";
 
 //Context
-import { ShoppingCart } from "../../../context/useContextShopping";
+import { ShoppingCart } from "../../../context/shoppingContext/useContextShopping";
 
 //Icons
 import { MdShoppingCart, MdShoppingBasket } from "react-icons/md";

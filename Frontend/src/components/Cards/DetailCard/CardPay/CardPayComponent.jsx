@@ -9,7 +9,7 @@ import {
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 
 //Context
-import { ShoppingCart } from "../../../../context/useContextShopping";
+import { ShoppingCart } from "../../../../context/shoppingContext/useContextShopping";
 
 //Dependencies
 import { useContext } from "react";

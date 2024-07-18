@@ -1,6 +1,6 @@
 //Dependencies
 import { useParams, Link } from "react-router-dom";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 //Components
 import HeaderMenuComponent from "../../components/Header/HeaderMenuComponent";
@@ -21,8 +21,8 @@ import data2 from "../../services/Jsons/ProductsImagen";
 import data3 from "../../services/Jsons/GalleyProductsImagen";
 import FormasPago from "../../services/Jsons/FormasPago";
 
-//Hooks
-import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
+//Context
+import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
 
 export default function ProductDetailPage() {
   const { slug, categoria } = useParams();
@@ -52,8 +52,11 @@ export default function ProductDetailPage() {
     );
   }
 
-  const { isOpenModalConfiguracion, handleClickModalConfiguracion } =
-    useModalConfigHook();
+  const {
+    isOpenModalConfiguracion,
+    setIsOpenModalConfiguracion,
+    handleClickModalConfiguracion,
+  } = useContext(ContextMenu);
 
   console.log(productFilterSelectedByCategory);
 
@@ -137,11 +140,7 @@ export default function ProductDetailPage() {
         </article>
       </div>
 
-      {isOpenModalConfiguracion && (
-        <ModalConfiguracionComponent
-          handleClickModalConfiguracion={handleClickModalConfiguracion}
-        />
-      )}
+      {isOpenModalConfiguracion && <ModalConfiguracionComponent />}
 
       <FooterComponent />
     </>

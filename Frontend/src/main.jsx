@@ -5,8 +5,8 @@ import "./index.css";
 
 //Context
 import { ProductsFilterProvider } from "./context/useContextProductsFilter";
-import { ShoppingCartProvider } from "./context/useContextShopping";
-import { ContextMenuProvider } from "./context/shopContext/usoContextMenu";
+import { ShoppingCartProvider } from "./context/shoppingContext/useContextShopping.jsx";
+import { ContextMenuProvider } from "./context/MenushopContext/usoContextMenu.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>

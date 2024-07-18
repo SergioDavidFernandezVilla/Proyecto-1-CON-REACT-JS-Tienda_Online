@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 
 //Hooks
-import useShoppingHook from "../hooks/shopping/usoShoppingHook";
+import useShoppingHook from "../../hooks/shopping/usoShoppingHook";
 
 export const ShoppingCart = createContext();
 

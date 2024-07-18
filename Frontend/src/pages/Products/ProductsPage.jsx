@@ -25,6 +25,9 @@ import { ProductsFilterContext } from "../../context/useContextProductsFilter";
 import usePaginationProductsHook from "../../hooks/Products/usePaginationProductsHook";
 import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
 
+//Context
+import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+
 export default function ProductsPage() {
   const allProducts = [...data1, ...data2, ...data3];
 
@@ -88,15 +91,15 @@ export default function ProductsPage() {
   console.log("filterProducts", filterProducts);
   console.log("searchQuery", searchQuery);
 
-  const { isOpenModalConfiguracion, handleClickModalConfiguracion } =
-    useModalConfigHook();
+  const {
+    isOpenModalConfiguracion,
+    setIsOpenModalConfiguracion,
+    handleClickModalConfiguracion,
+  } = useContext(ContextMenu);
 
   return (
     <>
-      <HeaderMenuComponent
-        isOpenModalConfiguracion={isOpenModalConfiguracion}
-        handleClickModalConfiguracion={handleClickModalConfiguracion}
-      />
+      <HeaderMenuComponent />
       <div className="container__products__filter__page">
         <MenuFiltersProductsComponent />
 

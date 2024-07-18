@@ -2,7 +2,7 @@
 import { useState, useEffect, useContext } from "react";
 
 //Context
-import { ShoppingCart } from "../../context/useContextShopping";
+import { ShoppingCart } from "../../context/shoppingContext/useContextShopping";
 
 export default function useModalConfigHook() {
   const [isOpenModalConfiguracion, setIsOpenModalConfiguracion] =

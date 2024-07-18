@@ -13,7 +13,7 @@ import {
 import OptionsCard from "../OptionCard/OptionsCardComponent";
 
 //Context
-import { ShoppingCart } from "../../../../context/useContextShopping";
+import { ShoppingCart } from "../../../../context/shoppingContext/useContextShopping";
 
 export default function CardProduct({
   id,

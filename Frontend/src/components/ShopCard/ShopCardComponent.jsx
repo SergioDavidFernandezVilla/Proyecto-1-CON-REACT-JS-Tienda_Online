@@ -2,7 +2,7 @@
 import { useState, useRef, useContext } from "react";
 
 //Context
-import { ShoppingCart } from "../../context/useContextShopping";
+import { ShoppingCart } from "../../context/shoppingContext/useContextShopping";
 
 //Icons
 import { MdRemoveCircle, MdAddCircle, MdDeleteForever } from "react-icons/md";

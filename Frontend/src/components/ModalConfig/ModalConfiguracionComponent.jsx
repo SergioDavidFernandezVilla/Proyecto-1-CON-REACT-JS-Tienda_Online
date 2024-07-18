@@ -1,11 +1,19 @@
+//Icons
 import { MdClear, MdSettings } from "react-icons/md";
 
-//Hooks
-import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
+//Dependencies
+import { useContext } from "react";
 
-export const ModalConfiguracionComponent = ({
-  handleClickModalConfiguracion,
-}) => {
+//Context
+import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+
+export const ModalConfiguracionComponent = () => {
+  const {
+    isOpenModalConfiguracion,
+    setIsOpenModalConfiguracion,
+    handleClickModalConfiguracion,
+  } = useContext(ContextMenu);
+
   return (
     <div className="container__modal">
       <div className="modal__container">

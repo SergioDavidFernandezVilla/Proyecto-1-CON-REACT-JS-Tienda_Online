@@ -11,7 +11,7 @@ import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalC
 import { useContext } from "react";
 
 //Context
-import { ContextMenu } from "../../context/shopContext/usoContextMenu";
+import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
 
 export default function HomePage() {
   const {
@@ -21,10 +21,7 @@ export default function HomePage() {
   } = useContext(ContextMenu);
   return (
     <>
-      <HeaderMenuComponent
-        isOpenModalConfiguracion={isOpenModalConfiguracion}
-        handleClickModalConfiguracion={handleClickModalConfiguracion}
-      />
+      <HeaderMenuComponent />
 
       <div className="container__home">
         <div className="container__gallery__products">
@@ -55,11 +52,7 @@ export default function HomePage() {
         ))}
       </div>
 
-      {isOpenModalConfiguracion && (
-        <ModalConfiguracionComponent
-          handleClickModalConfiguracion={handleClickModalConfiguracion}
-        />
-      )}
+      {isOpenModalConfiguracion && <ModalConfiguracionComponent />}
 
       <FooterComponent />
     </>
