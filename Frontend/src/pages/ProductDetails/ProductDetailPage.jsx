@@ -10,6 +10,7 @@ import CardFormsToPayComponent from "../../components/Cards/DetailCard/CardForms
 import GoToBackComponent from "../../components/VolverLink/GoToBackComponent";
 import CardsArticleComponent from "../../components/Cards/CardsArticle/CardsArticleComponent";
 import StarRatingComponent from "../../components/Cards/StarRating/StartRatingComponent";
+import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
 
 //Icons
 import Star from "../../assets/icons/start_completa.svg";
@@ -19,6 +20,9 @@ import data1 from "../../services/Jsons/productsPopularData";
 import data2 from "../../services/Jsons/ProductsImagen";
 import data3 from "../../services/Jsons/GalleyProductsImagen";
 import FormasPago from "../../services/Jsons/FormasPago";
+
+//Hooks
+import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
 
 export default function ProductDetailPage() {
   const { slug, categoria } = useParams();
@@ -48,11 +52,17 @@ export default function ProductDetailPage() {
     );
   }
 
+  const { isOpenModalConfiguracion, handleClickModalConfiguracion } =
+    useModalConfigHook();
+
   console.log(productFilterSelectedByCategory);
 
   return (
     <>
-      <HeaderMenuComponent />
+      <HeaderMenuComponent
+        isOpenModalConfiguracion={isOpenModalConfiguracion}
+        handleClickModalConfiguracion={handleClickModalConfiguracion}
+      />
       <div
         key={productFilterSelected.id}
         className="container__product__details"
@@ -126,6 +136,12 @@ export default function ProductDetailPage() {
           </section>
         </article>
       </div>
+
+      {isOpenModalConfiguracion && (
+        <ModalConfiguracionComponent
+          handleClickModalConfiguracion={handleClickModalConfiguracion}
+        />
+      )}
 
       <FooterComponent />
     </>

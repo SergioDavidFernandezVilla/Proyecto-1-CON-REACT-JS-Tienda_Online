@@ -5,11 +5,21 @@ import GalleryComponent from "../../components/Cards/Gallery/GalleryComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 import GalleyProductsImagen from "../../services/Jsons/GalleyProductsImagen";
 import carrousel from "../../services/Jsons/CarrouselCards/carrousel";
+import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
+
+//Hooks
+import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
 
 export default function HomePage() {
+  const { isOpenModalConfiguracion, handleClickModalConfiguracion } =
+    useModalConfigHook();
+
   return (
     <>
-      <HeaderMenuComponent />
+      <HeaderMenuComponent
+        isOpenModalConfiguracion={isOpenModalConfiguracion}
+        handleClickModalConfiguracion={handleClickModalConfiguracion}
+      />
 
       <div className="container__home">
         <div className="container__gallery__products">
@@ -39,6 +49,12 @@ export default function HomePage() {
           />
         ))}
       </div>
+
+      {isOpenModalConfiguracion && (
+        <ModalConfiguracionComponent
+          handleClickModalConfiguracion={handleClickModalConfiguracion}
+        />
+      )}
 
       <FooterComponent />
     </>

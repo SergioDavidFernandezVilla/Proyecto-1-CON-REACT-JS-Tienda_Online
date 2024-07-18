@@ -23,7 +23,10 @@ import { URL_BASE_PRODUCT } from "../../utils/UrlPage";
 //Context
 import { ShoppingCart } from "../../context/useContextShopping";
 
-export default function HeaderMenuComponent() {
+export default function HeaderMenuComponent({
+  isOpenModalConfiguracion,
+  handleClickModalConfiguracion,
+}) {
   const ArrayProducts = [...data1, ...data2, ...data3];
   const [data, setData] = useState(ArrayProducts);
   const [isOpenShopCart, setIsOpenShopCart] = useState(false);
@@ -89,9 +92,12 @@ export default function HeaderMenuComponent() {
             }`}
           >
             <Link
-              className="header1__menu__nav__list__item__link"
+              className="header1__menu__nav__list__item__link shopping__cart__link"
               onClick={handleClickShopCart}
             >
+              {cantidad > 0 ? (
+                <span className="span__cart__count">{cantidad}</span>
+              ) : null}
               <MdShoppingCart
                 className={`header1__menu__nav__list__item__link__icon`}
               />
@@ -103,8 +109,8 @@ export default function HeaderMenuComponent() {
 
           <li className="header1__menu__nav__list__item_li">
             <Link
-              to="/configuracion"
               className="header1__menu__nav__list__item__link"
+              onClick={() => handleClickModalConfiguracion()}
             >
               <MdSettings className="header1__menu__nav__list__item__link__icon" />
               Settings

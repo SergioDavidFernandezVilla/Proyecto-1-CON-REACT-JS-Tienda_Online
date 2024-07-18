@@ -1,12 +1,34 @@
+//Icons
 import {
   MdShoppingCart,
   MdShoppingBag,
   MdOutlineSubdirectoryArrowLeft,
 } from "react-icons/md";
 
+//Icons
 import { IoShieldCheckmarkOutline } from "react-icons/io5";
 
+//Context
+import { ShoppingCart } from "../../../../context/useContextShopping";
+
+//Dependencies
+import { useContext } from "react";
+
 export default function CardPayComponent({ productFilterSelected }) {
+  const { handleAddToCart } = useContext(ShoppingCart);
+
+  const product = {
+    id: productFilterSelected.id,
+    title: productFilterSelected.nombre,
+    price: productFilterSelected.precio,
+    image: productFilterSelected.imagen,
+    description: productFilterSelected.descripcion,
+    slug: productFilterSelected.slug,
+    stock: productFilterSelected.stock,
+    marca: productFilterSelected.marca,
+    categoria: productFilterSelected.categoria,
+  };
+
   return (
     <section className="article__product__details__content__section__pay">
       <header className="article__product__details__descripcion__header">
@@ -86,7 +108,10 @@ export default function CardPayComponent({ productFilterSelected }) {
             <MdShoppingBag />
             Comprar ahora
           </button>
-          <button className="article__product__details__comprar__div__button__2">
+          <button
+            className="article__product__details__comprar__div__button__2"
+            onClick={() => handleAddToCart(product)}
+          >
             <MdShoppingCart />
             Agregar a carrito
           </button>

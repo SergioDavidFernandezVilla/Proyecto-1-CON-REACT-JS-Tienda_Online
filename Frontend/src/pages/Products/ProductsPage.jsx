@@ -4,6 +4,7 @@ import FooterComponent from "../../components/Footer/FooterComponent";
 import MenuFiltersProductsComponent from "../../components/Menu/FilterProducts/MenuFiltersProducts/MenuFiltersProductsComponent";
 import CardsArticleComponent from "../../components/Cards/CardsArticle/CardsArticleComponent";
 import NavPaginationComponent from "../../components/Pagination/NavPaginationComponent";
+import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
 
 // Icons
 import { MdAutoAwesomeMotion } from "react-icons/md";
@@ -22,6 +23,7 @@ import { ProductsFilterContext } from "../../context/useContextProductsFilter";
 
 // Hooks
 import usePaginationProductsHook from "../../hooks/Products/usePaginationProductsHook";
+import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
 
 export default function ProductsPage() {
   const allProducts = [...data1, ...data2, ...data3];
@@ -86,9 +88,15 @@ export default function ProductsPage() {
   console.log("filterProducts", filterProducts);
   console.log("searchQuery", searchQuery);
 
+  const { isOpenModalConfiguracion, handleClickModalConfiguracion } =
+    useModalConfigHook();
+
   return (
     <>
-      <HeaderMenuComponent />
+      <HeaderMenuComponent
+        isOpenModalConfiguracion={isOpenModalConfiguracion}
+        handleClickModalConfiguracion={handleClickModalConfiguracion}
+      />
       <div className="container__products__filter__page">
         <MenuFiltersProductsComponent />
 
@@ -131,6 +139,12 @@ export default function ProductsPage() {
           </section>
         </main>
       </div>
+
+      {isOpenModalConfiguracion && (
+        <ModalConfiguracionComponent
+          handleClickModalConfiguracion={handleClickModalConfiguracion}
+        />
+      )}
 
       <NavPaginationComponent
         setCurrentPage={setCurrentPage}
