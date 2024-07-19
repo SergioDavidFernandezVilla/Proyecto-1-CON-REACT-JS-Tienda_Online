@@ -10,7 +10,7 @@ import CardFormsToPayComponent from "../../components/Cards/DetailCard/CardForms
 import GoToBackComponent from "../../components/VolverLink/GoToBackComponent";
 import CardsArticleComponent from "../../components/Cards/CardsArticle/CardsArticleComponent";
 import StarRatingComponent from "../../components/Cards/StarRating/StartRatingComponent";
-import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
+import { ModalConfiguracionComponent } from "../../components/ModalConfiguration/ModalConfiguracionComponent";
 
 //Icons
 import Star from "../../assets/icons/start_completa.svg";

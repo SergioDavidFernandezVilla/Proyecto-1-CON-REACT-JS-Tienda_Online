@@ -5,7 +5,7 @@ import GalleryComponent from "../../components/Cards/Gallery/GalleryComponent";
 import FooterComponent from "../../components/Footer/FooterComponent";
 import GalleyProductsImagen from "../../services/Jsons/GalleyProductsImagen";
 import carrousel from "../../services/Jsons/CarrouselCards/carrousel";
-import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
+import { ModalConfiguracionComponent } from "../../components/ModalConfiguration/ModalConfiguracionComponent";
 
 //Dependencies
 import { useContext } from "react";

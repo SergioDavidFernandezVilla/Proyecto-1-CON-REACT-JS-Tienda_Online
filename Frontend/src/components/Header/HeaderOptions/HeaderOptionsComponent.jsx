@@ -79,7 +79,7 @@ export const HeaderOptionsComponent = () => {
               <MdShoppingCart
                 className={`icon__menu__nav__opciones__nav__list__item__link`}
               />
-              Cart
+              Carrito
             </Link>
 
             {isOpenShopCart && <MenuShopCards />}
@@ -91,7 +91,7 @@ export const HeaderOptionsComponent = () => {
               onClick={() => handleClickModalConfiguracion()}
             >
               <MdSettings className="icon__menu__nav__opciones__nav__list__item__link" />
-              Settings
+              Configuracion
             </Link>
           </li>
         </ul>

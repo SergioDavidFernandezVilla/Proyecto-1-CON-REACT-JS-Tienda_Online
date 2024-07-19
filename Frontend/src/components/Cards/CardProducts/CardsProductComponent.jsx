@@ -47,7 +47,7 @@ export default function CardsProductComponent({
           </h4>
           <Link
             className="home__products__container__header__link"
-            to="/products"
+            to="/productos/filter/query/all/page/1"
           >
             Ver todos los productos disponibles{" "}
             <MdArrowForward className="home__products__container__header__link__icon" />

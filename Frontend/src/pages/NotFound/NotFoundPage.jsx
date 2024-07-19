@@ -1,5 +1,6 @@
 //Components
 import HeaderMenuComponent from "../../components/Header/HeaderMenuComponent";
+import { ModalConfiguracionComponent } from "../../components/ModalConfiguration/ModalConfiguracionComponent";
 
 // JSONs
 import data1 from "../../services/Jsons/productsPopularData";
@@ -7,15 +8,24 @@ import data2 from "../../services/Jsons/ProductsImagen";
 import data3 from "../../services/Jsons/GalleyProductsImagen";
 
 //Dependencies
-import { useState } from "react";
+import { useState, useContext } from "react";
 import { Link } from "react-router-dom";
 
 //Icons
 import Icon404 from "../../assets/icons/404/error_404.svg";
 
+//Context
+import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+
 export default function NotFoundPage() {
   const ArrayProducts = [...data1, ...data2, ...data3];
   const [data, setData] = useState(ArrayProducts);
+
+  const {
+    isOpenModalConfiguracion,
+    setIsOpenModalConfiguracion,
+    handleClickModalConfiguracion,
+  } = useContext(ContextMenu);
 
   return (
     <>
@@ -44,6 +54,8 @@ export default function NotFoundPage() {
           </figcaption>
         </figure>
       </div>
+
+      {isOpenModalConfiguracion && <ModalConfiguracionComponent />}
     </>
   );
 }

@@ -4,7 +4,7 @@ import FooterComponent from "../../components/Footer/FooterComponent";
 import MenuFiltersProductsComponent from "../../components/Menu/FilterProducts/MenuFiltersProducts/MenuFiltersProductsComponent";
 import CardsArticleComponent from "../../components/Cards/CardsArticle/CardsArticleComponent";
 import NavPaginationComponent from "../../components/Pagination/NavPaginationComponent";
-import { ModalConfiguracionComponent } from "../../components/ModalConfig/ModalConfiguracionComponent";
+import { ModalConfiguracionComponent } from "../../components/ModalConfiguration/ModalConfiguracionComponent";
 
 // Icons
 import { MdAutoAwesomeMotion } from "react-icons/md";
