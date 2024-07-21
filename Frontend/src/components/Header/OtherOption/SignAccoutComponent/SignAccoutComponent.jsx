@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 
 //Context
-import { AuthContext } from "../../../context/AuthContext/useAuthContext";
+import { AuthContext } from "../../../../context/AuthContext/useAuthContext";
 
 export const SignAccoutComponent = () => {
   const { handleClickLogin } = useContext(AuthContext);

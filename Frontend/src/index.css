@@ -279,6 +279,51 @@ body{
           align-items: center;
           height: fit-content;
           color: white;
+          position: relative;
+
+          .header__menu__nav__opciones__nav__list__item__link__opciones__account__ul{
+            width: 140px;
+            height: 50px;
+            position: absolute;
+            background-color: rgb(255, 255, 255);
+            border-radius: 4px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            padding: 10px;
+            top: 36px;
+            left: -50px;
+            z-index: 1111;
+
+            .header__menu__nav__opciones__nav__list__item__link__opciones__account__ul__li{
+              width: 100%;
+              height: 100%;
+              display: flex;
+              flex-direction: row;
+              align-items: center;
+              justify-content: space-between;
+              gap: 10px;
+
+              .link__menu__nav__opciones__nav__list__item__link__opciones__account__ul__li__link{
+                color: rgb(40 113 231);
+                text-decoration: none;
+                font-size: 16px;
+                transition: all 0.3s ease-in-out;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                gap: 5px;
+                cursor: pointer;
+                width: 100%;
+                height: 100%;
+                
+                &:hover{
+                  text-decoration: underline;
+                  
+                }
+              }
+            }
+          }
        
           .link__menu__nav__opciones__nav__list__item__link{
             color: white;
@@ -625,7 +670,7 @@ body{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url("./assets/images/products/imagen9.jpg");
+     
       background-repeat: no-repeat;
       background-size: cover;
       border-radius: 12px;
@@ -817,7 +862,7 @@ body{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url("./assets/images/products/imagen8.jpg");
+    
       background-repeat: no-repeat;
       background-size: cover;
       background-position: inherit;
@@ -983,7 +1028,7 @@ body{
       width: 100%;
       height: 100%;
       position: relative;
-      background-image: url("./assets/images/products/imagen3.jpg");
+   
       background-repeat: no-repeat;
       background-size: cover;
       background-position: top;

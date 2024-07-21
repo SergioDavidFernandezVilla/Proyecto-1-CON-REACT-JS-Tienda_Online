@@ -23,9 +23,13 @@ export default function GalleryComponent({
       <Link
         to={`/productos/marca/${marca}/categoria/${categoria}/producto/${slug}`}
       >
-        <figure
-          className={`gallery__container_section__figure_${estilo}`}
-        ></figure>
+        <figure className={`gallery__container_section__figure_${estilo}`}>
+          <img
+            src={imagen}
+            alt={title}
+            className="gallery__container_section__figure__img"
+          />
+        </figure>
       </Link>
 
       <OptionsCard />

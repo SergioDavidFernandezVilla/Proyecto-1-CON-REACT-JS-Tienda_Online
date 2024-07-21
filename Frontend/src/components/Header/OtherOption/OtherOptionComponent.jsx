@@ -5,8 +5,8 @@ import { useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext/useAuthContext";
 
 //Components
-import { AccountComponent } from "./AccountComponent";
-import { SignAccoutComponent } from "./SignAccoutComponent";
+import { AccountComponent } from "./AccountComponent/AccountComponent";
+import { SignAccoutComponent } from "./SignAccoutComponent/SignAccoutComponent";
 
 export const OtherOptionsComponent = () => {
   const { user } = useContext(AuthContext);
