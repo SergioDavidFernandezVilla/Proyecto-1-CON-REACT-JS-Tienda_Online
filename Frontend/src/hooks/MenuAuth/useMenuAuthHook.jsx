@@ -11,6 +11,7 @@ export const useMenuAuthHook = () => {
       email: "pedro@gmail.com",
       password: "123456",
       role: "user",
+      avatarURL: "https://avatars.dicebear.com/api/initials/Pedro.svg",
     },
   ]);
 
@@ -20,8 +21,8 @@ export const useMenuAuthHook = () => {
   };
 
   const handleClickLogout = () => {
-    setIsOpenMenuAuth(!isOpenMenuAuth);
-    console.log("click logout");
+    setUser([]);
+    console.log("Se ha cerrado sesión");
   };
 
   return {

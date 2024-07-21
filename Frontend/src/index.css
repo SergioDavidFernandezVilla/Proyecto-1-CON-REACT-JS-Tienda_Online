@@ -277,7 +277,7 @@ body{
         .header__menu__nav__opciones__nav__list__item_li{
           display: flex;
           align-items: center;
-          height: 100%;
+          height: fit-content;
           color: white;
        
           .link__menu__nav__opciones__nav__list__item__link{
@@ -1168,8 +1168,9 @@ body{
       .home__products__container__header{
         width: 92%;
         margin: 0 auto;
-        display: grid;
-        grid-template-columns: 1fr 1fr;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
         gap: 20px;
        
        

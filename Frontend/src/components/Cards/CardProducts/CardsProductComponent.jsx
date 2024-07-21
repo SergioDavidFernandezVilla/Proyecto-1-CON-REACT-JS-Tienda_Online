@@ -19,9 +19,34 @@ export default function CardsProductComponent({
   id,
   etiqueta,
 }) {
+  const [TamañoCard, setTamañoCard] = useState(5);
+  const [TamañoWidth, setTamañoWidth] = useState(0);
+
+  const laptop = 1024;
+  const desktop = 1600;
+  const tablet = 768;
+  const mobile = 480;
+
+  useEffect(() => {
+    const TamañoWidth = window.innerWidth; // Obtener el ancho de la ventana del navegador
+    setTamañoWidth(TamañoWidth);
+
+    if (TamañoWidth < laptop) {
+      setTamañoCard(2);
+    } else if (TamañoWidth < desktop) {
+      setTamañoCard(3);
+    } else if (TamañoWidth < tablet) {
+      setTamañoCard(4);
+    } else if (TamañoWidth < mobile) {
+      setTamañoCard(1);
+    }
+
+    console.log("TamañoWidth", TamañoWidth);
+  }, [TamañoWidth]);
+
   const { nextPage, prevPage, startIndex, endIndex, className } = usePagination(
     0,
-    5,
+    TamañoCard, // Cantidad de elementos por página
     jsonAPI.length,
     etiqueta
   ); // Mostrar 5 elementos por página
