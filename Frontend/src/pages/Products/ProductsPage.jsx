@@ -26,7 +26,7 @@ import usePaginationProductsHook from "../../hooks/Products/usePaginationProduct
 import useModalConfigHook from "../../hooks/ModalConfig/usoModalConfigHook";
 
 //Context
-import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+import { ContextMenu } from "../../context/MenushopContext/useContextMenu";
 
 export default function ProductsPage() {
   const allProducts = [...data1, ...data2, ...data3];

@@ -6,12 +6,14 @@ import FooterComponent from "../../components/Footer/FooterComponent";
 import GalleyProductsImagen from "../../services/Jsons/GalleyProductsImagen";
 import carrousel from "../../services/Jsons/CarrouselCards/carrousel";
 import { ModalConfiguracionComponent } from "../../components/ModalConfiguration/ModalConfiguracionComponent";
+import { MenuAuthComponent } from "../../components/MenuAuth/MenuAuthComponent";
 
 //Dependencies
 import { useContext } from "react";
 
 //Context
-import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+import { ContextMenu } from "../../context/MenushopContext/useContextMenu";
+import { AuthContext } from "../../context/AuthContext/useAuthContext";
 
 export default function HomePage() {
   const {
@@ -19,6 +21,9 @@ export default function HomePage() {
     setIsOpenModalConfiguracion,
     handleClickModalConfiguracion,
   } = useContext(ContextMenu);
+
+  const { isOpenMenuAuth } = useContext(AuthContext);
+
   return (
     <>
       <HeaderMenuComponent />
@@ -51,6 +56,8 @@ export default function HomePage() {
           />
         ))}
       </div>
+
+      {isOpenMenuAuth && <MenuAuthComponent />}
 
       {isOpenModalConfiguracion && <ModalConfiguracionComponent />}
 

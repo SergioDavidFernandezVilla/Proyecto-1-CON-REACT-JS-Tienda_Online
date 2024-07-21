@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 
 //Context
 import { ShoppingCart } from "../../../context/shoppingContext/useContextShopping";
-import { ContextMenu } from "../../../context/MenushopContext/usoContextMenu";
+import { ContextMenu } from "../../../context/MenushopContext/useContextMenu";
 
 export const HeaderOptionsComponent = () => {
   const {

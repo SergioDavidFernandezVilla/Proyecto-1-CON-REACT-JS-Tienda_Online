@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 import Icon404 from "../../assets/icons/404/error_404.svg";
 
 //Context
-import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+import { ContextMenu } from "../../context/MenushopContext/useContextMenu";
 
 export default function NotFoundPage() {
   const ArrayProducts = [...data1, ...data2, ...data3];

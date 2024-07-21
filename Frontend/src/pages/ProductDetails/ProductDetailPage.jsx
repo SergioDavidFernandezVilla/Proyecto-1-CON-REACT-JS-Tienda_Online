@@ -22,7 +22,7 @@ import data3 from "../../services/Jsons/GalleyProductsImagen";
 import FormasPago from "../../services/Jsons/FormasPago";
 
 //Context
-import { ContextMenu } from "../../context/MenushopContext/usoContextMenu";
+import { ContextMenu } from "../../context/MenushopContext/useContextMenu";
 
 export default function ProductDetailPage() {
   const { slug, categoria } = useParams();
