@@ -7,7 +7,7 @@ import express from "express";
 import morgan from "morgan";
 
 
-// Routes
+// Routers
 import { UserRouter } from "./routers/user/UserRouter.js";
 
 // Conexión a la base de datos
@@ -24,12 +24,6 @@ connectionDB.connect();
 
 // Rutas
 app.use("/api/v1", UserRouter);
-
-console.log(process.env.PGUSER);
-console.log(process.env.PGPASSWORD);
-console.log(process.env.PGHOST);
-console.log(process.env.PGPORT);
-console.log(process.env.PGDATABASE);
 
 // Puerto
 app.listen(process.env.PORT, () => {

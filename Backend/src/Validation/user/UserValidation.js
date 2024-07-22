@@ -10,20 +10,20 @@ export const UserValidationRegister = (data) => {
 export const UserValidationLogin = (data) => {
     const { email, password } = data;
 
+    
+
     if (!email || !password) {
         return {valid: false, message: "Campos obligatorios"};
     }
 
-    if (email.includes("@")) {
-        return {valid: false, message: "El correo debe contener un @"};
-    }
+    return {valid: true, message: "Datos correctos"};
+}
 
-    if (email.length < 8) {
-        return {valid: false, message: "El correo debe contener un mínimo de 8 caracteres"};
-    }
+export const UserValidationGet = (data) => {
+    const {id} = data;
 
-    if (password.length < 8) {
-        return {valid: false, message: "La contraseña debe tener al menos 8 caracteres"};
+   if (!id) {
+        return {valid: false, message: "Campo obligatorio"};
     }
 
     return {valid: true, message: "Datos correctos"};

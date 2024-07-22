@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
 });
 
 //Obtener un usuario
-router.get("/getUser", UserController.UserGetController);
+router.get("/get-user/:id", UserController.UserGetController);
 
 //Crear un usuario
 router.post("/register", UserController.UserRegisterController);
