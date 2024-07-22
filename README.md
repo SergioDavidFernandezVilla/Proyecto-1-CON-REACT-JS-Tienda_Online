@@ -26,7 +26,7 @@
 
 - **Node.js**: Entorno de ejecución de JavaScript del lado del servidor.
 - **Express**: Framework web minimalista para Node.js.
-- **Base de datos**: MySQL.
+- **Base de datos**: PostgreSQL.
 
 ## Requisitos Previos
 
