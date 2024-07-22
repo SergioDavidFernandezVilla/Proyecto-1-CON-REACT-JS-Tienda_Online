@@ -1,0 +1,26 @@
+// Liberias
+import express from "express";
+
+const router = express.Router();
+
+// Controllers
+import { UserController } from "../../controllers/user/UserController.js";
+
+// Ruta para obtener la página principal
+router.get("/", (req, res) => {
+  res.send("Página principal");
+});
+
+//Obtener un usuario
+router.get("/getUser", UserController.UserGetController);
+
+//Crear un usuario
+router.post("/register", UserController.UserRegisterController);
+
+//Login
+router.post("/login", UserController.LoginUserController);
+
+//Logout
+router.post("/logout", UserController.LogoutUserController);
+
+export { router as UserRouter };
