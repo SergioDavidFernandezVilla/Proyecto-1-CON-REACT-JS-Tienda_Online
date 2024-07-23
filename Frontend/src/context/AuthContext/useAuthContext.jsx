@@ -15,6 +15,15 @@ export const AuthContextProvider = ({ children }) => {
     setUser,
     handleClickLogin,
     handleClickLogout,
+    handleSubmitData,
+    handleChangeEmail,
+    handleChangePassword,
+    errorEmail,
+    errorMessageEmail,
+    errorPassword,
+    errorGeneral,
+    errorMessageGeneral,
+    errorMessagePassword,
   } = useMenuAuthHook();
 
   const login = (user) => {
@@ -36,6 +45,15 @@ export const AuthContextProvider = ({ children }) => {
         setIsOpenMenuAuth,
         handleClickLogin,
         handleClickLogout,
+        handleSubmitData,
+        handleChangeEmail,
+        handleChangePassword,
+        errorEmail,
+        errorMessageEmail,
+        errorPassword,
+        errorGeneral,
+        errorMessageGeneral,
+        errorMessagePassword,
       }}
     >
       {children}

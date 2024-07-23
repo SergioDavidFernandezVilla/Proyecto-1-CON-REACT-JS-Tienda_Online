@@ -3017,23 +3017,54 @@ body{
       gap: 10px;
       position: relative;
 
-      .form__menu__auth__div__input{
-        width: 100%;
-        height: 45px;
-        border:none;
-        outline: none;
-        background-color: #efefef;
-        color: black;
-        font-size: 20px;  
-        border-radius: 4px;
-        padding: 0px 10px;
-        transition: all 0.3s ease-in-out;
-       
+      .div__container__input{
+        position: relative;
 
-        &::placeholder{
-          color:rgb(174, 174, 174);
+        .form__menu__auth__div__input{
+          width: 100%;
+          height: 45px;
+          border:none;
+          outline: none;
+          background-color: #efefef;
+          color: black;
+          font-size: 20px;  
+          border-radius: 4px;
+          padding:0px 45px 0px 15px;
+          transition: all 0.3s ease-in-out;
+          position: relative;
+  
+         
+         
+  
+          &::placeholder{
+            color:rgb(174, 174, 174);
+          }
+        }
+  
+        & .icon__menu__auth__div__input{
+          position: absolute;
+          top: 0px;
+          left: 93%;
+          height: 100%;
+          cursor: pointer;
+          transition: all 0.3s ease-in-out;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+  
+          &:hover{
+            background-color: rgb(220, 220, 220);
+          }
+  
+          .icon__menu__auth__div__input__icon{
+            height: 18px;
+            width: 18px;
+            color:rgb(117 117 117);
+          }
         }
       }
+
+     
 
       .form__menu__auth__div__label{
         width: 100%;

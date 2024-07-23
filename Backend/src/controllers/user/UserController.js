@@ -1,7 +1,14 @@
+//Models
 import { UserModel } from "../../models/user/userModel.js";
+
+//Validations
 import { UserValidationRegister, UserValidationLogin, UserValidationGet } from "../../Validation/user/UserValidation.js";
 
+//Utils password
 import { hashPassword, comparePassword } from "../../utils/passwordHash/passwordHash.js";
+
+//JWT
+import { generateToken } from "../../jwt/UserTokenJWT.js";
 
 export const UserController = {
 
@@ -57,16 +64,17 @@ export const UserController = {
             const user = await UserModel.UserLogin(email);
 
             if (!user) {
-                return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
+                return res.status(400).json({ message: "Correo o contraseña incorrectos" });
             }
 
             const IsPasswordCorrect = await comparePassword(password, user.password);
             if (!IsPasswordCorrect) {
-                return res.status(400).json({ message: "Usuario o contraseña incorrectos" });
+                return res.status(400).json({ message: "Correo o contraseña incorrectos" });
             }
 
+            const token = generateToken(user);
 
-            res.send({message: "Login exitoso", user: user});
+            res.status(200).json({message: "Login exitoso", user: user, token: token});
         } catch (error) {
             console.error("Error al iniciar sesión:", error);
             res.status(500).json({ message: "Error del servidor" });

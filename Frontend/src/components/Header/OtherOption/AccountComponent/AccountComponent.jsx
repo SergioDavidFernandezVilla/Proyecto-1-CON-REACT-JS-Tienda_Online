@@ -8,8 +8,8 @@ import { AuthContext } from "../../../../context/AuthContext/useAuthContext";
 //Icons
 import { MdLogout } from "react-icons/md";
 
-export const AccountComponent = ({ user }) => {
-  const { handleClickLogout } = useContext(AuthContext);
+export const AccountComponent = () => {
+  const { handleClickLogout, user } = useContext(AuthContext);
 
   const [isOpenAccount, setIsOpenAccount] = useState(false);
 

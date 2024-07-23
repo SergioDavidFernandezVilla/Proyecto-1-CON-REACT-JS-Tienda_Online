@@ -1,49 +1,43 @@
-//Dependencies
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
-
-//Icons
-import { MdOutlineLogin, MdOutlinePerson } from "react-icons/md";
-
-//Components
+import {
+  MdOutlineLogin,
+  MdOutlinePerson,
+  MdLockPerson,
+  MdMailLock,
+} from "react-icons/md";
 import { HeaderMenuAuthComponent } from "./HeaderMenuAuth/HeaderMenuAuthComponent";
 import { FooterMenuAuthComponent } from "./FooterMenuAuth/FooterMenuAuthComponent";
 
+//Context
+import { AuthContext } from "../../context/AuthContext/useAuthContext";
+
 export const MenuAuthComponent = () => {
-  const [error, setError] = useState(false);
-  const [errorMessageEmail, setErrorMessageEmail] = useState("");
-  const [errorMessagePassword, setErrorMessagePassword] = useState("");
   const inputRefEmail = useRef(null);
   const inputRefPassword = useRef(null);
+  const [data, setData] = useState([]);
 
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-
-  const handleChangeEmail = () => {
-    const email = inputRefEmail.current.value;
-    setError(false);
-    setErrorMessageEmail("");
-
-    if (!email.includes("@")) {
-      setError(true);
-      setErrorMessageEmail("El correo debe contener un @");
-    }
-  };
-
-  const handleChangePassword = () => {
-    const password = inputRefPassword.current.value;
-    setError(false);
-    setErrorMessagePassword("");
-
-    if (password.length < 8) {
-      setError(true);
-      setErrorMessagePassword("La contraseña debe tener al menos 8 caracteres");
-    }
-  };
+  const {
+    handleSubmitData,
+    handleChangeEmail,
+    handleChangePassword,
+    errorEmail,
+    errorMessageEmail,
+    errorPassword,
+    errorGeneral,
+    errorMessageGeneral,
+    errorMessagePassword,
+  } = useContext(AuthContext);
 
   return (
     <div className="container__menu__auth">
-      <form action="" className="form__menu__auth">
+      <form
+        className="form__menu__auth"
+        method="POST"
+        onSubmit={(e) =>
+          handleSubmitData(e, "http://localhost:3000/api/v1/login")
+        }
+      >
         <div className="container__menu__auth__form">
           <HeaderMenuAuthComponent />
 
@@ -51,18 +45,25 @@ export const MenuAuthComponent = () => {
             <label htmlFor="email" className="form__menu__auth__div__label">
               <strong>Correo: </strong>
             </label>
-            <input
-              onChange={handleChangeEmail}
-              ref={inputRefEmail}
-              type="email"
-              name="email"
-              id="email"
-              autoComplete="username"
-              placeholder="ejemplo@ejemplo.com"
-              className="form__menu__auth__div__input"
-            />
 
-            {error && (
+            <div className="div__container__input">
+              <input
+                type="email"
+                name="email"
+                id="email"
+                autoComplete="username"
+                placeholder="ejemplo@ejemplo.com"
+                className="form__menu__auth__div__input"
+                ref={inputRefEmail}
+                onChange={(e) => handleChangeEmail(e)}
+              />
+
+              <div className="icon__menu__auth__div__input">
+                <MdMailLock className="icon__menu__auth__div__input__icon" />
+              </div>
+            </div>
+
+            {errorEmail && (
               <p className="form__menu__auth__div__p__error">
                 {errorMessageEmail}
               </p>
@@ -73,20 +74,33 @@ export const MenuAuthComponent = () => {
             <label htmlFor="password" className="form__menu__auth__div__label">
               <strong>Contraseña: </strong>
             </label>
-            <input
-              onChange={handleChangePassword}
-              ref={inputRefPassword}
-              type="password"
-              name="password"
-              id="password"
-              placeholder="******"
-              autoComplete="current-password"
-              className="form__menu__auth__div__input"
-            />
 
-            {error && (
+            <div className="div__container__input">
+              <input
+                type="password"
+                name="password"
+                id="password"
+                placeholder="******"
+                autoComplete="current-password"
+                className="form__menu__auth__div__input"
+                ref={inputRefPassword}
+                onChange={(e) => handleChangePassword(e)}
+              />
+
+              <div className="icon__menu__auth__div__input">
+                <MdLockPerson className="icon__menu__auth__div__input__icon" />
+              </div>
+            </div>
+
+            {errorPassword && (
               <p className="form__menu__auth__div__p__error">
                 {errorMessagePassword}
+              </p>
+            )}
+
+            {errorGeneral && (
+              <p className="form__menu__auth__div__p__error">
+                {errorMessageGeneral}
               </p>
             )}
           </div>
