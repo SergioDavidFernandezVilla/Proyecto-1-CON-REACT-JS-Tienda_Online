@@ -1,5 +1,5 @@
 //Dependencies
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const useMenuAuthHook = () => {
   const [isOpenMenuAuth, setIsOpenMenuAuth] = useState(false);
@@ -63,19 +63,22 @@ export const useMenuAuthHook = () => {
           body: JSON.stringify(userData),
         });
 
-        const user = await response.json();
+        const data = await response.json();
 
         if (
-          user.message === ERROR_MESSAGE ||
-          user.message === SUCCESS_MESSAGE
+          data.message === ERROR_MESSAGE ||
+          data.message === SUCCESS_MESSAGE
         ) {
           setErrorGeneral(true);
-          setErrorMessageGeneral(user.message);
+          setErrorMessageGeneral(data.message);
         }
 
-        setUser(user);
+        // Asegúrate de que 'user' sea un array
+        const userArray = data.user ? [data.user] : [];
 
-        console.log(user);
+        setUser(userArray);
+
+        console.log(userArray);
       } catch (error) {
         console.log(error);
       }
@@ -83,6 +86,13 @@ export const useMenuAuthHook = () => {
 
     loginData();
   };
+
+  useEffect(() => {
+    // Si existe un usuario en la sesión, No mostrar el componente de login
+    if (user.length > 0) {
+      setIsOpenMenuAuth(false);
+    }
+  }, [user]);
 
   return {
     isOpenMenuAuth,

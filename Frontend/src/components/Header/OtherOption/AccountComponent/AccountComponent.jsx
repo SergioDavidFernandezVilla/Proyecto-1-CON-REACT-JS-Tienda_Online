@@ -8,8 +8,8 @@ import { AuthContext } from "../../../../context/AuthContext/useAuthContext";
 //Icons
 import { MdLogout } from "react-icons/md";
 
-export const AccountComponent = () => {
-  const { handleClickLogout, user } = useContext(AuthContext);
+export const AccountComponent = ({ user }) => {
+  const { handleClickLogout } = useContext(AuthContext);
 
   const [isOpenAccount, setIsOpenAccount] = useState(false);
 
@@ -32,7 +32,7 @@ export const AccountComponent = () => {
             className="link__menu__nav__opciones__nav__list__item__link"
           >
             <img
-              src={user.avatarURL}
+              src="https://www.gravatar.com/avatar/0"
               alt={user.name}
               width={30}
               height={30}
