@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 
 export const useMenuAuthHook = () => {
   const [isOpenMenuAuth, setIsOpenMenuAuth] = useState(false);
+  const [isOpenAccount, setIsOpenAccount] = useState(false);
 
   const [errorEmail, setErrorEmail] = useState(false);
   const [errorMessageEmail, setErrorMessageEmail] = useState("");
@@ -11,10 +12,15 @@ export const useMenuAuthHook = () => {
   const [errorMessageGeneral, setErrorMessageGeneral] = useState("");
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
 
-  const [user, setUser] = useState([]);
+  const [dataUSer, setDataUser] = useState([]);
 
   const ERROR_MESSAGE = "Correo o contraseña incorrectos";
   const SUCCESS_MESSAGE = "Login exitoso";
+
+  const handleClickRegister = () => {
+    setIsOpenAccount(!isOpenAccount);
+    setIsOpenMenuAuth(false);
+  };
 
   const handleClickLogin = () => {
     setIsOpenMenuAuth(!isOpenMenuAuth);
@@ -42,7 +48,7 @@ export const useMenuAuthHook = () => {
     console.log("password", password);
   };
 
-  const handleSubmitData = (event) => {
+  const handleSubmitData = async (event) => {
     event.preventDefault();
 
     const email = event.target.email.value;
@@ -53,50 +59,52 @@ export const useMenuAuthHook = () => {
       password: password,
     };
 
-    async function loginData() {
-      try {
-        const response = await fetch("http://localhost:3000/api/v1/login", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(userData),
-        });
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(userData),
+      });
 
-        const data = await response.json();
+      const data = await response.json();
 
-        if (
-          data.message === ERROR_MESSAGE ||
-          data.message === SUCCESS_MESSAGE
-        ) {
-          setErrorGeneral(true);
-          setErrorMessageGeneral(data.message);
-        }
-
-        // Asegúrate de que 'user' sea un array
-        const userArray = data.user ? [data.user] : [];
-
-        setUser(userArray);
-
-        console.log(userArray);
-      } catch (error) {
-        console.log(error);
+      if (data.message === ERROR_MESSAGE || data.message === SUCCESS_MESSAGE) {
+        setErrorGeneral(true);
+        setErrorMessageGeneral(data.message);
       }
-    }
 
-    loginData();
+      // Asegúrate de que 'user' sea un array
+      const userArray = data.user ? [data.user] : [];
+
+      // Set the user data as an object
+      setDataUser(userArray);
+
+      console.log(dataUSer);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   useEffect(() => {
     // Si existe un usuario en la sesión, No mostrar el componente de login
-    if (user.length > 0) {
+    if (dataUSer.length > 0) {
       setIsOpenMenuAuth(false);
     }
-  }, [user]);
+  }, [dataUSer]);
+
+  const Loguout = () => {
+    setUser([]);
+  };
 
   return {
+    dataUSer,
+    setDataUser,
     isOpenMenuAuth,
     setIsOpenMenuAuth,
+    isOpenAccount,
+    setIsOpenAccount,
     handleSubmitData,
     handleChangeEmail,
     handleChangePassword,
@@ -106,9 +114,11 @@ export const useMenuAuthHook = () => {
     errorGeneral,
     errorMessageGeneral,
     errorMessagePassword,
-    user,
-    setUser,
+    dataUSer,
+    setDataUser,
+    Loguout,
     handleClickLogin,
     handleClickLogout,
+    handleClickRegister,
   };
 };

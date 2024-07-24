@@ -3,6 +3,7 @@ import { URL_BASE_PRODUCT } from "../../../utils/UrlPage";
 
 //Components
 import { MenuShopCards } from "../../ShopCard/MenuShopCards/MenuShopCards";
+import { LiHeaderOptionComponent } from "./LiHeaderOption/LiHeaderOptionComponent";
 
 //Icons
 import { MdShoppingCart, MdSettings } from "react-icons/md";
@@ -47,23 +48,14 @@ export const HeaderOptionsComponent = () => {
     <header className="header__menu__nav__opciones">
       <nav className="header__menu__nav__opciones__nav">
         <ul className="header__menu__nav__opciones__nav__list_ul">
-          <li className="header__menu__nav__opciones__nav__list__item_li">
-            <Link
-              to="/"
-              className="link__menu__nav__opciones__nav__list__item__link"
-            >
-              Home
-            </Link>
-          </li>
-          <li className="header__menu__nav__opciones__nav__list__item_li">
-            <Link
-              to={`${URL_BASE_PRODUCT}`}
-              className="link__menu__nav__opciones__nav__list__item__link"
-            >
-              Productos
-            </Link>
-          </li>
+          <LiHeaderOptionComponent TextLink={"Home"} TextURL={"/"} />
+          <LiHeaderOptionComponent
+            TextLink={"Productos"}
+            TextURL={`${URL_BASE_PRODUCT}`}
+          />
+        </ul>
 
+        <ul className="header__menu__nav__opciones__nav__list_ul">
           <li
             className={`header__menu__nav__opciones__nav__list__item_li ${
               isOpenShopCart ? "active" : ""

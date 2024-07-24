@@ -39,7 +39,8 @@ body{
     justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 20px;
+    width: 1720px;
+    margin: 0 auto;
 
     .header1__menu__nav__logo{
       display: flex;
@@ -280,6 +281,14 @@ body{
           height: fit-content;
           color: white;
           position: relative;
+          padding: 8px 24px;
+          border: 1px solid rgb(220, 220, 220);
+          border-radius: 60px;
+          transition: all 0.3s ease-in-out;
+
+          &:hover{
+            background-color: rgb(68 62 181);
+          }
 
           .header__menu__nav__opciones__nav__list__item__link__opciones__account__ul{
             width: 140px;
@@ -355,10 +364,12 @@ body{
 
   .header__menu__nav__opciones__nav{
     display: grid;
-    justify-content: end;
+    grid-auto-flow: column;
+    justify-content: space-between;
     align-items: center;
     height: 100%;
-    padding: 0 20px;
+    width: 1720px;
+    margin: 0 auto;
 
     .header__menu__nav__opciones__nav__list_ul{
       display: flex;
@@ -1499,7 +1510,6 @@ body{
                 font-weight: 600;
                 cursor: pointer;
                 display: flex;
-                flex-direction: row-reverse;
                 align-items: center;
                 justify-content: center;
                 gap: 8px;
@@ -2974,7 +2984,6 @@ body{
 
   .form__menu__auth{
     width: 600px;
-    height: 620px;
     background-color: white;
     border-radius: 8px;
     display: flex;
@@ -3052,14 +3061,10 @@ body{
           justify-content: center;
           align-items: center;
   
-          &:hover{
-            background-color: rgb(220, 220, 220);
-          }
-  
           .icon__menu__auth__div__input__icon{
             height: 18px;
             width: 18px;
-            color:rgb(117 117 117);
+            color:rgb(102, 102, 102);
           }
         }
       }

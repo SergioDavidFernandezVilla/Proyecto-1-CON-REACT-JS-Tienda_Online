@@ -11,13 +11,17 @@ export const AuthContextProvider = ({ children }) => {
   const {
     isOpenMenuAuth,
     setIsOpenMenuAuth,
-    user,
-    setUser,
+    isOpenAccount,
+    setIsOpenAccount,
+    dataUSer,
+    setDataUser,
+    Loguout,
     handleClickLogin,
     handleClickLogout,
     handleSubmitData,
     handleChangeEmail,
     handleChangePassword,
+    handleClickRegister,
     errorEmail,
     errorMessageEmail,
     errorPassword,
@@ -26,28 +30,22 @@ export const AuthContextProvider = ({ children }) => {
     errorMessagePassword,
   } = useMenuAuthHook();
 
-  const login = (user) => {
-    setUser(user);
-  };
-
-  const logout = () => {
-    setUser([]);
-  };
-
   return (
     <AuthContext.Provider
       value={{
-        user,
-        setUser,
-        login,
-        logout,
+        dataUSer,
+        setDataUser,
+        Loguout,
         isOpenMenuAuth,
         setIsOpenMenuAuth,
+        isOpenAccount,
+        setIsOpenAccount,
         handleClickLogin,
         handleClickLogout,
         handleSubmitData,
         handleChangeEmail,
         handleChangePassword,
+        handleClickRegister,
         errorEmail,
         errorMessageEmail,
         errorPassword,
