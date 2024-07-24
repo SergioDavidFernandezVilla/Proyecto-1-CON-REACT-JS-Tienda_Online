@@ -74,7 +74,7 @@ export const UserController = {
 
             const token = generateToken(user);
 
-            res.status(200).json({message: "Login exitoso", user: user, token: token});
+            res.status(200).json({message: "Login exitoso", user: user, token: token, id: user.id});
         } catch (error) {
             console.error("Error al iniciar sesión:", error);
             res.status(500).json({ message: "Error del servidor" });

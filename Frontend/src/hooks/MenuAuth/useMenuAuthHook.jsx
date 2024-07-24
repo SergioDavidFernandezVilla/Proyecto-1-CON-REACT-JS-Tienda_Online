@@ -18,8 +18,9 @@ export const useMenuAuthHook = () => {
   const SUCCESS_MESSAGE = "Login exitoso";
 
   const handleClickRegister = () => {
+    console.log("click register");
+
     setIsOpenAccount(!isOpenAccount);
-    setIsOpenMenuAuth(false);
   };
 
   const handleClickLogin = () => {

@@ -22,7 +22,7 @@ export default function HomePage() {
     handleClickModalConfiguracion,
   } = useContext(ContextMenu);
 
-  const { isOpenMenuAuth } = useContext(AuthContext);
+  const { isOpenMenuAuth, isOpenAccount } = useContext(AuthContext);
 
   return (
     <>
@@ -58,6 +58,7 @@ export default function HomePage() {
       </div>
 
       {isOpenMenuAuth && <MenuAuthComponent />}
+      {isOpenAccount && <MenuAuthComponent />}
 
       {isOpenModalConfiguracion && <ModalConfiguracionComponent />}
 
