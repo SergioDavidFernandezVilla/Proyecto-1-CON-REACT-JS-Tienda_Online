@@ -2989,7 +2989,7 @@ body{
     display: flex;
     flex-direction: column;
     gap: 10px;
-    padding: 20px;
+    padding:26px 23px;
 
     .container__menu__auth__form{
       width: 100%;
@@ -3081,6 +3081,45 @@ body{
    
     }
 
+    .form__menu__auth__div__check{
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+
+      .div__container__check{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+
+        .form__menu__auth__div__check__label{
+          font-size: 15px;
+          color:#0e0e0e;
+        }
+  
+        .form__menu__auth__div__check__input{
+          width: 20px;
+          height: 20px;
+          border: 1px solid black;
+          outline: none;
+          background-color: rgb(255, 255, 255);
+          color: black;
+          font-size: 20px;  
+          border-radius: 4px;
+          transition: all 0.3s ease-in-out;
+          position: relative;
+    
+      
+          &::placeholder{
+            color:rgb(174, 174, 174);
+          }
+        }
+      }
+    }
+
     .form__menu__auth__div__buttons{
       width: 100%;
       display: flex;
@@ -3153,6 +3192,7 @@ body{
       flex-direction: column;
       gap: 10px;
       position: relative;
+      overflow: hidden;
 
      
 

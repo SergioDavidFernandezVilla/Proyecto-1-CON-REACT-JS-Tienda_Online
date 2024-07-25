@@ -7,9 +7,16 @@ import { HeaderMenuAuthComponent } from "./HeaderMenuAuth/HeaderMenuAuthComponen
 import { InputFormMenuAuthComponent } from "./InputFormMenuAuth/InputFormMenuAuthComponent";
 import { ButtonsMenuAuthComponent } from "./ButtonsMenuAuth/ButtonsMenuAuthComponent";
 import { TextOptionMenuAuthComponent } from "./TextOptionMenuAuth/TextOptionMenuAuthComponent";
+import { CheckAcceptMenuAuthComponent } from "./CheckAcceptMenuAuth/CheckAcceptMenuAuthComponent";
 
 //Context
 import { AuthContext } from "../../context/AuthContext/useAuthContext";
+
+//JSONs
+import {
+  RegisterData,
+  LoginData,
+} from "../../services/Jsons/DataInput/DataInput";
 
 export const MenuAuthComponent = () => {
   const { isOpenAccount, isOpenMenuAuth, handleSubmitData } =
@@ -17,9 +24,11 @@ export const MenuAuthComponent = () => {
 
   return (
     <>
+      {/*Register*/}
       {isOpenAccount && (
         <div className="container__menu__auth">
           <form
+            id="data-form"
             className="form__menu__auth"
             method="POST"
             onSubmit={(e) =>
@@ -29,7 +38,18 @@ export const MenuAuthComponent = () => {
             <div className="container__menu__auth__form">
               <HeaderMenuAuthComponent Text={"Crear una cuenta"} />
 
-              <InputFormMenuAuthComponent />
+              {RegisterData.map((data) => (
+                <InputFormMenuAuthComponent
+                  key={data.id}
+                  type={data.type}
+                  placeholder={data.placeholder}
+                  name={data.name}
+                  autoComplete={data.autoComplete}
+                  nameInput={data.nameInput}
+                />
+              ))}
+
+              <CheckAcceptMenuAuthComponent />
 
               <ButtonsMenuAuthComponent
                 BtnClassName="btn__menu__auth__div__buttons__especial"
@@ -43,11 +63,12 @@ export const MenuAuthComponent = () => {
               />
             </div>
 
-            <FooterMenuAuthComponent />
+            <FooterMenuAuthComponent TextAccount={"Crear una cuenta con"} />
           </form>
         </div>
       )}
 
+      {/*Login*/}
       {isOpenMenuAuth && (
         <div className="container__menu__auth">
           <form
@@ -60,7 +81,16 @@ export const MenuAuthComponent = () => {
             <div className="container__menu__auth__form">
               <HeaderMenuAuthComponent Text={"Iniciar sesión"} />
 
-              <InputFormMenuAuthComponent />
+              {LoginData.map((data) => (
+                <InputFormMenuAuthComponent
+                  key={data.id}
+                  type={data.type}
+                  placeholder={data.placeholder}
+                  name={data.name}
+                  nameInput={data.nameInput}
+                  autoComplete={data.autoComplete}
+                />
+              ))}
 
               <ButtonsMenuAuthComponent
                 BtnClassName="btn__menu__auth__div__buttons"
@@ -80,7 +110,7 @@ export const MenuAuthComponent = () => {
               />
             </div>
 
-            <FooterMenuAuthComponent />
+            <FooterMenuAuthComponent TextAccount={"Iniciar sesión con"} />
           </form>
         </div>
       )}

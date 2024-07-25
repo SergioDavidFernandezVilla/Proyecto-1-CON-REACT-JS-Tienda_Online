@@ -1,12 +1,12 @@
 //Jsons
 import AccountImages from "../../../services/Jsons/AccountsImages/AccountImages";
 
-export const FooterMenuAuthComponent = () => {
+export const FooterMenuAuthComponent = ({ TextAccount }) => {
   return (
     <footer className="footer__menu__auth">
       <header className="footer__menu__auth__header">
         <p className="footer__menu__auth__header__p">
-          <strong>Inicia sesión con</strong>
+          <strong>{TextAccount}</strong>
         </p>
       </header>
       <div className="container__menu__auth__footer__div">

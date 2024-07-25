@@ -7,7 +7,14 @@ import { MdLockPerson, MdMailLock } from "react-icons/md";
 //Context
 import { AuthContext } from "../../../context/AuthContext/useAuthContext";
 
-export const InputFormMenuAuthComponent = () => {
+export const InputFormMenuAuthComponent = ({
+  idType,
+  name,
+  nameInput,
+  type,
+  placeholder,
+  autoComplete,
+}) => {
   const {
     handleChangeEmail,
     errorEmail,
@@ -25,17 +32,18 @@ export const InputFormMenuAuthComponent = () => {
   return (
     <>
       <div className="form__menu__auth__div">
-        <label htmlFor="email" className="form__menu__auth__div__label">
-          <strong>Correo: </strong>
+        <label htmlFor={idType} className="form__menu__auth__div__label">
+          <strong>{name}: </strong>
         </label>
 
         <div className="div__container__input">
           <input
-            type="email"
-            name="email"
-            id="email"
-            autoComplete="username"
-            placeholder="ejemplo@ejemplo.com"
+            type={type}
+            name={nameInput}
+            id={idType}
+            required="required"
+            autoComplete={autoComplete}
+            placeholder={placeholder}
             className="form__menu__auth__div__input"
             ref={inputRefEmail}
             onChange={(e) => handleChangeEmail(e)}
@@ -48,41 +56,6 @@ export const InputFormMenuAuthComponent = () => {
 
         {errorEmail && (
           <p className="form__menu__auth__div__p__error">{errorMessageEmail}</p>
-        )}
-      </div>
-
-      <div className="form__menu__auth__div">
-        <label htmlFor="password" className="form__menu__auth__div__label">
-          <strong>Contraseña: </strong>
-        </label>
-
-        <div className="div__container__input">
-          <input
-            type="password"
-            name="password"
-            id="password"
-            placeholder="******"
-            autoComplete="current-password"
-            className="form__menu__auth__div__input"
-            ref={inputRefPassword}
-            onChange={(e) => handleChangePassword(e)}
-          />
-
-          <div className="icon__menu__auth__div__input">
-            <MdLockPerson className="icon__menu__auth__div__input__icon" />
-          </div>
-        </div>
-
-        {errorPassword && (
-          <p className="form__menu__auth__div__p__error">
-            {errorMessagePassword}
-          </p>
-        )}
-
-        {errorGeneral && (
-          <p className="form__menu__auth__div__p__error">
-            {errorMessageGeneral}
-          </p>
         )}
       </div>
     </>
