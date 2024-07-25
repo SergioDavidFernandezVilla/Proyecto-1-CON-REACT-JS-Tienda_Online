@@ -53,6 +53,7 @@ export const MenuAuthComponent = () => {
                   name={data.name}
                   autoComplete={data.autoComplete}
                   nameInput={data.nameInput}
+                  IconInput={data.IconInput}
                 />
               ))}
 
@@ -96,6 +97,7 @@ export const MenuAuthComponent = () => {
                   name={data.name}
                   nameInput={data.nameInput}
                   autoComplete={data.autoComplete}
+                  IconInput={data.IconInput}
                 />
               ))}
 

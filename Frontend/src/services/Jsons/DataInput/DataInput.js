@@ -1,3 +1,8 @@
+//Icons
+import email from "../../../assets/icons/RegisterAndLogin/icon__email.svg"
+import password from "../../../assets/icons/RegisterAndLogin/icon__pasword.svg"
+import user from "../../../assets/icons/RegisterAndLogin/icon__username.svg"
+
 export const RegisterData = [
   {
     id: 1,
@@ -7,6 +12,7 @@ export const RegisterData = [
     type: "text",
     placeholder: "Nombre",
     autoComplete: "username",
+    IconInput: user,
   },
   {
     id: 2,
@@ -16,6 +22,7 @@ export const RegisterData = [
     type: "email",
     placeholder: "ejemplo@ejemplo.com",
     autoComplete: "email",
+    IconInput: email,
   },
   {
     id: 3,
@@ -25,6 +32,7 @@ export const RegisterData = [
     type: "password",
     placeholder: "******",
     autoComplete: "new-password",
+    IconInput: password,
   },
   {
     id: 4,
@@ -34,6 +42,7 @@ export const RegisterData = [
     type: "password",
     placeholder: "******",
     autoComplete: "new-password",
+    IconInput: password,
   },
 ];
 
@@ -46,6 +55,7 @@ export const LoginData = [
     type: "email",
     placeholder: "ejemplo@ejemplo.com",
     autoComplete: "email",
+    IconInput: email,
   },
   {
     id: 2,
@@ -55,5 +65,6 @@ export const LoginData = [
     type: "password",
     placeholder: "******",
     autoComplete: "new-password",
+    IconInput: password,
   },
 ];

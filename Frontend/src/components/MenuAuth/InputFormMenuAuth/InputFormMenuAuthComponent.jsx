@@ -1,11 +1,11 @@
 //Dependencies
 import { useContext, useRef } from "react";
 
-//Icons
-import { MdLockPerson, MdMailLock } from "react-icons/md";
-
 //Context
 import { AuthContext } from "../../../context/AuthContext/useAuthContext";
+
+//Components
+import { ErrorTextFormMenuAuthComponent } from "./ErrorTextFormMenuAuth/ErrorTextFormMenuAuthComponent";
 
 export const InputFormMenuAuthComponent = ({
   idType,
@@ -14,6 +14,7 @@ export const InputFormMenuAuthComponent = ({
   type,
   placeholder,
   autoComplete,
+  IconInput,
 }) => {
   const { errorEmail, errorMessageEmail } = useContext(AuthContext);
 
@@ -36,13 +37,15 @@ export const InputFormMenuAuthComponent = ({
           />
 
           <div className="icon__menu__auth__div__input">
-            <MdMailLock className="icon__menu__auth__div__input__icon" />
+            <img
+              src={IconInput}
+              alt={name}
+              className="icon__menu__auth__div__input__icon"
+            />
           </div>
         </div>
 
-        {errorEmail && (
-          <p className="form__menu__auth__div__p__error">{errorMessageEmail}</p>
-        )}
+        <ErrorTextFormMenuAuthComponent ErrorMessage={errorMessageEmail} />
       </div>
     </>
   );
