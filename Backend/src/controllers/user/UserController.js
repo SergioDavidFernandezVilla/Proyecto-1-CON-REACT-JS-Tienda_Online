@@ -5,7 +5,7 @@ import { UserModel } from "../../models/user/userModel.js";
 import { UserValidationRegister, UserValidationLogin, UserValidationGet } from "../../Validation/user/UserValidation.js";
 
 //Utils password
-import { hashPassword, comparePassword } from "../../utils/passwordHash/passwordHash.js";
+import { hashPassword, comparePassword, hashPasswordConfirm } from "../../utils/passwordHash/passwordHash.js";
 
 //JWT
 import { generateToken } from "../../jwt/UserTokenJWT.js";
@@ -31,7 +31,7 @@ export const UserController = {
     },
 
     UserRegisterController: async (req, res) => {
-        const { email, password, name } = req.body;
+        const { email, password,confirmpassword, name } = req.body;
 
         const validation = UserValidationRegister(req.body);
 
@@ -40,8 +40,11 @@ export const UserController = {
         }
 
         try {
-            const passwordHash = await hashPassword(password);
-            const newUser = await UserModel.UserRegister(email, passwordHash, name);
+            const passwordHash = await hashPassword(password, 10);
+            const confirmPasswordHash = await hashPassword(confirmpassword, 10);
+
+
+            const newUser = await UserModel.UserRegister(email, passwordHash, confirmPasswordHash, name);
             res.status(201).json({message: "Se ha registrado correctamente", user: newUser});
         } catch (error) {
             console.error("Error al registrar el usuario:", error);

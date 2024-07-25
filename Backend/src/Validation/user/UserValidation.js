@@ -1,9 +1,12 @@
 export const UserValidationRegister = (data) => {
-    const { email, password, name } = data;
+    const { email, password, confirmPassword, name } = data;
 
     if (!email || !password || !name) {
         return {valid: false, message: "Son campos obligatorios"};
     }
+
+   
+
     return {valid: true, message: "Datos correctos"};
 }
 
