@@ -9,6 +9,7 @@ import { useMenuAuthHook } from "../../hooks/MenuAuth/useMenuAuthHook";
 
 export const AuthContextProvider = ({ children }) => {
   const {
+    handleSubmitDataRegister,
     isOpenMenuAuth,
     setIsOpenMenuAuth,
     isOpenAccount,
@@ -33,6 +34,7 @@ export const AuthContextProvider = ({ children }) => {
   return (
     <AuthContext.Provider
       value={{
+        handleSubmitDataRegister,
         dataUSer,
         setDataUser,
         Loguout,

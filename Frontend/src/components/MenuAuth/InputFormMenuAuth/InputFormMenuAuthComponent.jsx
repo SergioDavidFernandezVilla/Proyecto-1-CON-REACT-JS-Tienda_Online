@@ -15,19 +15,7 @@ export const InputFormMenuAuthComponent = ({
   placeholder,
   autoComplete,
 }) => {
-  const {
-    handleChangeEmail,
-    errorEmail,
-    errorMessageEmail,
-    handleChangePassword,
-    errorPassword,
-    errorMessagePassword,
-    errorGeneral,
-    errorMessageGeneral,
-  } = useContext(AuthContext);
-
-  const inputRefEmail = useRef(null);
-  const inputRefPassword = useRef(null);
+  const { errorEmail, errorMessageEmail } = useContext(AuthContext);
 
   return (
     <>
@@ -45,8 +33,6 @@ export const InputFormMenuAuthComponent = ({
             autoComplete={autoComplete}
             placeholder={placeholder}
             className="form__menu__auth__div__input"
-            ref={inputRefEmail}
-            onChange={(e) => handleChangeEmail(e)}
           />
 
           <div className="icon__menu__auth__div__input">

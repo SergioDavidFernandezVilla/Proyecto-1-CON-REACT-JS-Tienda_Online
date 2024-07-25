@@ -19,8 +19,12 @@ import {
 } from "../../services/Jsons/DataInput/DataInput";
 
 export const MenuAuthComponent = () => {
-  const { isOpenAccount, isOpenMenuAuth, handleSubmitData } =
-    useContext(AuthContext);
+  const {
+    isOpenAccount,
+    isOpenMenuAuth,
+    handleSubmitData,
+    handleSubmitDataRegister,
+  } = useContext(AuthContext);
 
   return (
     <>
@@ -32,7 +36,10 @@ export const MenuAuthComponent = () => {
             className="form__menu__auth"
             method="POST"
             onSubmit={(e) =>
-              handleSubmitData(e, "http://localhost:3000/api/v1/login")
+              handleSubmitDataRegister(
+                e,
+                "http://localhost:3000/api/v1/register"
+              )
             }
           >
             <div className="container__menu__auth__form">

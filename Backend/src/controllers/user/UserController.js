@@ -42,10 +42,9 @@ export const UserController = {
         try {
             const passwordHash = await hashPassword(password, 10);
             const confirmPasswordHash = await hashPassword(confirmpassword, 10);
-
-
-            const newUser = await UserModel.UserRegister(email, passwordHash, confirmPasswordHash, name);
-            res.status(201).json({message: "Se ha registrado correctamente", user: newUser});
+        
+            const user = await UserModel.UserRegister(email, passwordHash, confirmPasswordHash, name);
+            res.status(201).json({ message: "Se ha registrado correctamente", user: user });
         } catch (error) {
             console.error("Error al registrar el usuario:", error);
             res.status(500).json({ message: "Error del servidor" });
