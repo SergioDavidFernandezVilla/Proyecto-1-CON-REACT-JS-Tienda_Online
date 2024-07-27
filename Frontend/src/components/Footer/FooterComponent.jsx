@@ -4,6 +4,12 @@ import {
   MdShoppingBag,
   MdOutlineMenuBook,
   MdContactEmergency,
+  MdSettings,
+  MdHistory,
+  MdCreditCard,
+  MdInfo,
+  MdPolicy,
+  MdOutlineInfo,
 } from "react-icons/md";
 import { FaSquareXTwitter } from "react-icons/fa6";
 import { PiInstagramLogoFill } from "react-icons/pi";
@@ -77,16 +83,19 @@ export default function FooterComponent() {
           <ul className="footer__nav__list">
             <li className="footer__nav__list__item">
               <a href="/" className="footer__nav__list__item__link">
+                <MdSettings />
                 <p>Configuracion</p>
               </a>
             </li>
             <li className="footer__nav__list__item">
               <a href="/" className="footer__nav__list__item__link">
+                <MdHistory />
                 <p>Historial de pedidos</p>
               </a>
             </li>
             <li className="footer__nav__list__item">
               <a href="/" className="footer__nav__list__item__link">
+                <MdCreditCard />
                 <p>Rembolso de pago</p>
               </a>
             </li>
@@ -100,16 +109,19 @@ export default function FooterComponent() {
           <ul className="footer__nav__list">
             <li className="footer__nav__list__item">
               <a href="/" className="footer__nav__list__item__link">
+                <MdInfo />
                 <p>Acerca de</p>
               </a>
             </li>
             <li className="footer__nav__list__item">
               <a href="/" className="footer__nav__list__item__link">
+                <MdPolicy />
                 <p>Política de privacidad</p>
               </a>
             </li>
             <li className="footer__nav__list__item">
               <a href="/" className="footer__nav__list__item__link">
+                <MdOutlineInfo />
                 <p>Condiciones de uso</p>
               </a>
             </li>
