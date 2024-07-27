@@ -121,7 +121,7 @@ export const UserController = {
 
             if (!user) {
                 return res.status(401).json({
-                    message: "No se ha proporcionado un token de autenticación válido"
+                    message: "No existe el usuario con ese token"
                 });
             }
 
@@ -131,6 +131,58 @@ export const UserController = {
             });
         } catch (error) {
             console.error("Error al verificar el token:", error);
+            res.status(500).json({ message: "Error del servidor" });
+        }
+    },
+
+    RefreshTokenController: async (req, res) => {
+        const token = req.headers.authorization.split(" ")[1];
+
+        if (!token || token === "") {
+            return res.status(401).json({
+                message: "No se ha proporcionado un token de autenticación"
+            });
+        }
+
+        try {
+            const decoded = verifyToken(token);
+
+            if (!decoded) {
+                return res.status(401).json({
+                    message: "No proporcionó un token de autenticación válido o ha caducado"
+                });
+            }
+
+            const user = await UserModel.UserGet(decoded.id);
+
+            if (!user) {
+                return res.status(401).json({
+                    message: "No existe el usuario con ese token"
+                });
+            }
+
+            const tokenNew = generateToken(user);
+
+            const cookieOptions = {
+                httpyOnly: true,
+                secure: true,
+                maxAge: 1000 * 60 * 60 * 24 * 7,
+                sameSite: "strict",
+                path: "/",
+                domain: "localhost",
+                maxAge: 24 * 60 * 60 * 1000 // 1 día de duración
+            }
+
+            // Establecer la cookie en la respuesta
+            res.cookie('token', tokenNew, cookieOptions);
+
+            res.status(200).json({
+                message: "Token actualizado correctamente",
+                token: tokenNew,
+                user: user
+            });
+        } catch (error) {
+            console.error("Error al actualizar el token:", error);
             res.status(500).json({ message: "Error del servidor" });
         }
     },

@@ -13,6 +13,7 @@ export const useMenuAuthHook = () => {
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
 
   const [dataUser, setDataUser] = useState([]);
+  const [token, setToken] = useState("");
   const [dataRegister, setDataRegister] = useState([]);
 
   const ERROR_MESSAGE = "Correo o contraseña incorrectos";
@@ -71,8 +72,8 @@ export const useMenuAuthHook = () => {
         setErrorMessageGeneral(data.message);
       }
 
-      setDataUser(data);
-      console.log("data", data);
+      setDataUser(data.user);
+      console.log("data", data.user);
 
       // Si el login es exitoso, guardar el token en una cookie
       if (data.token) {
@@ -128,11 +129,16 @@ export const useMenuAuthHook = () => {
 
   useEffect(() => {
     // Si existe un usuario en la sesión, No mostrar el componente de login
+
+    if (dataUser) {
+      setIsOpenMenuAuth(false);
+      setIsOpenAccount(false);
+    }
   }, [dataUser]);
 
   useEffect(() => {
-    const token = Cookies.get("token");
-    if (token) {
+    const TOKEN = Cookies.get("token");
+    if (TOKEN) {
       // Verificar si el token es válido
       const verifyToken = async () => {
         try {
@@ -142,7 +148,7 @@ export const useMenuAuthHook = () => {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`,
+                Authorization: `Bearer ${TOKEN}`,
               },
             }
           );
@@ -159,9 +165,45 @@ export const useMenuAuthHook = () => {
     }
   }, []);
 
+  useEffect(() => {
+    //Refrescar token
+
+    const refreshToken = async () => {
+      const TOKEN = Cookies.get("token");
+
+      if (!TOKEN) {
+        return;
+      }
+
+      try {
+        const response = await fetch(
+          "http://localhost:3000/api/v1/refresh-token",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${TOKEN}`,
+            },
+          }
+        );
+        const data = await response.json();
+        if (data.user) {
+          setDataUser([data.user]);
+        }
+      } catch (error) {
+        console.log("Error al actualizar el token:", error);
+        Cookies.remove("token");
+      }
+    };
+
+    refreshToken();
+  }, []);
+
   return {
     handleSubmitDataRegister,
     dataUser,
+    token,
+    setToken,
     setDataUser,
     isOpenMenuAuth,
     setIsOpenMenuAuth,

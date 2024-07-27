@@ -1,22 +1,22 @@
 //Dependencies
 import { useContext, useState } from "react";
 
-//Context
-import { AuthContext } from "../../../context/AuthContext/useAuthContext";
+//Hooks
+import { useMenuAuthHook } from "../../../hooks/MenuAuth/useMenuAuthHook";
 
 //Components
 import { AccountComponent } from "./AccountComponent/AccountComponent";
 import { SignAccoutComponent } from "./SignAccoutComponent/SignAccoutComponent";
 
 export const OtherOptionsComponent = () => {
-  const { dataUSer } = useContext(AuthContext);
+  const { dataUser } = useMenuAuthHook();
 
-  console.log("user.length", dataUSer);
+  console.log("user.length", dataUser);
 
   return (
     <>
-      {dataUSer ? (
-        <AccountComponent user={dataUSer} />
+      {dataUser ? (
+        <AccountComponent user={dataUser} />
       ) : (
         <SignAccoutComponent />
       )}

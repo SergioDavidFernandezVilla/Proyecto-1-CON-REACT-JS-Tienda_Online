@@ -26,4 +26,7 @@ router.post("/logout", UserController.LogoutUserController);
 //Verificar token
 router.post("/verify-token", UserController.VerifyTokenController);
 
+//Refrescar token
+router.post("/refresh-token", UserController.RefreshTokenController);
+
 export { router as UserRouter };
