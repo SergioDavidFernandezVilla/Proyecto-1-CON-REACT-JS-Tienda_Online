@@ -23,4 +23,7 @@ router.post("/login", UserController.LoginUserController);
 //Logout
 router.post("/logout", UserController.LogoutUserController);
 
+//Verificar token
+router.post("/verify-token", UserController.VerifyTokenController);
+
 export { router as UserRouter };

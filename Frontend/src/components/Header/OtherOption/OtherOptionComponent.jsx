@@ -1,5 +1,5 @@
 //Dependencies
-import { useContext } from "react";
+import { useContext, useState } from "react";
 
 //Context
 import { AuthContext } from "../../../context/AuthContext/useAuthContext";
@@ -11,11 +11,11 @@ import { SignAccoutComponent } from "./SignAccoutComponent/SignAccoutComponent";
 export const OtherOptionsComponent = () => {
   const { dataUSer } = useContext(AuthContext);
 
-  console.log("user.length", dataUSer.length);
+  console.log("user.length", dataUSer);
 
   return (
     <>
-      {dataUSer.length ? (
+      {dataUSer ? (
         <AccountComponent user={dataUSer} />
       ) : (
         <SignAccoutComponent />

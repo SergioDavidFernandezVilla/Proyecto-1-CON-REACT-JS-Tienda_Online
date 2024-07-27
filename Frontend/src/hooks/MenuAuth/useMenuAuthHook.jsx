@@ -1,5 +1,5 @@
-//Dependencies
 import { useEffect, useState } from "react";
+import Cookies from "js-cookie";
 
 export const useMenuAuthHook = () => {
   const [isOpenMenuAuth, setIsOpenMenuAuth] = useState(false);
@@ -12,25 +12,23 @@ export const useMenuAuthHook = () => {
   const [errorMessageGeneral, setErrorMessageGeneral] = useState("");
   const [errorMessagePassword, setErrorMessagePassword] = useState("");
 
-  const [dataUSer, setDataUser] = useState([]);
+  const [dataUser, setDataUser] = useState([]);
   const [dataRegister, setDataRegister] = useState([]);
 
   const ERROR_MESSAGE = "Correo o contraseña incorrectos";
   const SUCCESS_MESSAGE = "Login exitoso";
 
   const handleClickRegister = () => {
-    console.log("click register");
-
     setIsOpenAccount(!isOpenAccount);
   };
 
   const handleClickLogin = () => {
     setIsOpenMenuAuth(!isOpenMenuAuth);
-    console.log("click login");
   };
 
   const handleClickLogout = () => {
-    setUser([]);
+    setDataUser([]);
+    Cookies.remove("token"); // Eliminar el token de las cookies al cerrar sesión
     console.log("Se ha cerrado sesión");
   };
 
@@ -38,16 +36,12 @@ export const useMenuAuthHook = () => {
     const email = event.target.value;
     setErrorEmail(false);
     setErrorMessageEmail("");
-
-    console.log("email", email);
   };
 
   const handleChangePassword = (event) => {
     const password = event.target.value;
     setErrorPassword(false);
     setErrorMessagePassword("");
-
-    console.log("password", password);
   };
 
   const handleSubmitData = async (event) => {
@@ -77,13 +71,13 @@ export const useMenuAuthHook = () => {
         setErrorMessageGeneral(data.message);
       }
 
-      // Asegúrate de que 'user' sea un array
-      const userArray = data.user ? [data.user] : [];
+      setDataUser(data);
+      console.log("data", data);
 
-      // Set the user data as an object
-      setDataUser(userArray);
-
-      console.log(dataUSer);
+      // Si el login es exitoso, guardar el token en una cookie
+      if (data.token) {
+        Cookies.set("token", data.token, { expires: 1 }); // Expira en 1 día
+      }
     } catch (error) {
       console.log(error);
     }
@@ -120,14 +114,13 @@ export const useMenuAuthHook = () => {
         setErrorMessageGeneral(data.message);
       }
 
-      // Asegúrate de que 'user' sea un array
       const userArray = data.user ? [data.user] : [];
-
-      // Set the user data as an object
-      setDataUser(userArray);
       setDataRegister(userArray);
 
-      console.log(data);
+      // Si el registro es exitoso, guardar el token en una cookie
+      if (data.token) {
+        Cookies.set("token", data.token, { expires: 1 }); // Expira en 1 día
+      }
     } catch (error) {
       console.log(error);
     }
@@ -135,19 +128,40 @@ export const useMenuAuthHook = () => {
 
   useEffect(() => {
     // Si existe un usuario en la sesión, No mostrar el componente de login
-    if (dataUSer.length > 0 || dataRegister.length > 0) {
-      setIsOpenMenuAuth(false);
-      setIsOpenAccount(false);
-    }
-  }, [dataUSer]);
+  }, [dataUser]);
 
-  const Loguout = () => {
-    setUser([]);
-  };
+  useEffect(() => {
+    const token = Cookies.get("token");
+    if (token) {
+      // Verificar si el token es válido
+      const verifyToken = async () => {
+        try {
+          const response = await fetch(
+            "http://localhost:3000/api/v1/verify-token",
+            {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          );
+          const data = await response.json();
+          if (data.user) {
+            setDataUser([data.user]);
+          }
+        } catch (error) {
+          console.log("Error al verificar el token:", error);
+          Cookies.remove("token");
+        }
+      };
+      verifyToken();
+    }
+  }, []);
 
   return {
     handleSubmitDataRegister,
-    dataUSer,
+    dataUser,
     setDataUser,
     isOpenMenuAuth,
     setIsOpenMenuAuth,
@@ -162,9 +176,6 @@ export const useMenuAuthHook = () => {
     errorGeneral,
     errorMessageGeneral,
     errorMessagePassword,
-    dataUSer,
-    setDataUser,
-    Loguout,
     handleClickLogin,
     handleClickLogout,
     handleClickRegister,

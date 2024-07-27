@@ -8,7 +8,7 @@ import { UserValidationRegister, UserValidationLogin, UserValidationGet } from "
 import { hashPassword, comparePassword, hashPasswordConfirm } from "../../utils/passwordHash/passwordHash.js";
 
 //JWT
-import { generateToken } from "../../jwt/UserTokenJWT.js";
+import { generateToken, verifyToken } from "../../jwt/UserTokenJWT.js";
 
 export const UserController = {
 
@@ -76,9 +76,61 @@ export const UserController = {
 
             const token = generateToken(user);
 
-            res.status(200).json({message: "Login exitoso", user: user, token: token, id: user.id});
+            const cookieOptions = {
+                httpyOnly: true,
+                secure: true,
+                maxAge: 1000 * 60 * 60 * 24 * 7,
+                sameSite: "strict",
+                path: "/",
+                domain: "localhost",
+                maxAge: 24 * 60 * 60 * 1000 // 1 día de duración
+            }
+
+            // Establecer la cookie en la respuesta
+            res.cookie('token', token, cookieOptions);
+
+            res.status(200).json({message: "Login exitoso",
+                token: token,
+                user: user
+            });
         } catch (error) {
             console.error("Error al iniciar sesión:", error);
+            res.status(500).json({ message: "Error del servidor" });
+        }
+    },
+
+    VerifyTokenController: async (req, res) => {
+        const token = req.headers.authorization.split(" ")[1];
+
+        if (!token || token === "") {
+            return res.status(401).json({
+                message: "No se ha proporcionado un token de autenticación"
+            });
+        }
+
+        try {
+            const decoded = verifyToken(token);
+
+            if (!decoded) {
+                return res.status(401).json({
+                    message: "No se ha proporcionado un token de autenticación válido"
+                });
+            }
+
+            const user = await UserModel.UserGet(decoded.id);
+
+            if (!user) {
+                return res.status(401).json({
+                    message: "No se ha proporcionado un token de autenticación válido"
+                });
+            }
+
+            res.status(200).json({
+                message: "Token verificado correctamente",
+                user: user
+            });
+        } catch (error) {
+            console.error("Error al verificar el token:", error);
             res.status(500).json({ message: "Error del servidor" });
         }
     },

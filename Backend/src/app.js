@@ -6,6 +6,7 @@ dotenv.config();
 import express from "express";
 import morgan from "morgan";
 import cors from 'cors';
+import cookieParser from "cookie-parser";
 
 // Routers
 import { UserRouter } from "./routers/user/UserRouter.js";
@@ -25,6 +26,9 @@ app.use(cors(
     credentials: true,
   }
 )); // Permite que los requests se envíen desde cualquier origen
+
+// Guardar token en cookie
+app.use(cookieParser());
 
 // Conexión a la base de datos
 connectionDB.connect();
