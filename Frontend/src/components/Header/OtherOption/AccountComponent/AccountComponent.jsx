@@ -2,15 +2,10 @@
 import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
 
-//Context
-import { AuthContext } from "../../../../context/AuthContext/useAuthContext";
-
 //Icons
 import { MdLogout } from "react-icons/md";
 
-export const AccountComponent = ({ user }) => {
-  const { Loguout } = useContext(AuthContext);
-
+export const AccountComponent = ({ user, handleClickLogout }) => {
   const [isOpenAccount, setIsOpenAccount] = useState(false);
 
   const handleClickAccount = () => {
@@ -45,7 +40,7 @@ export const AccountComponent = ({ user }) => {
             <ul className="header__menu__nav__opciones__nav__list__item__link__opciones__account__ul">
               <li className="header__menu__nav__opciones__nav__list__item__link__opciones__account__ul__li">
                 <Link
-                  onClick={Loguout}
+                  onClick={handleClickLogout}
                   to=""
                   className="link__menu__nav__opciones__nav__list__item__link__opciones__account__ul__li__link"
                 >
