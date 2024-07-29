@@ -30,6 +30,28 @@ export const UserController = {
         }
     },
 
+    UserCreateController: async (req, res) => {
+        const { email, password,confirmpassword, name, role } = req.body;
+
+        const validation = UserValidationRegister(req.body);
+
+        if (!validation.valid) {
+            return res.status(400).json({ message: validation.message });
+        }
+
+        try {
+            const passwordHash = await hashPassword(password, 10);
+            const confirmPasswordHash = await hashPassword(confirmpassword, 10);
+        
+            const user = await UserModel.UserCreate(email, passwordHash, confirmPasswordHash, name, role);
+            res.status(201).json({ message: "Se ha registrado correctamente", user: user });
+        } catch (error) {
+            console.error("Error al registrar el usuario:", error);
+            res.status(500).json({ message: "Error del servidor" });
+        }
+
+    },
+
     UserRegisterController: async (req, res) => {
         const { email, password,confirmpassword, name } = req.body;
 

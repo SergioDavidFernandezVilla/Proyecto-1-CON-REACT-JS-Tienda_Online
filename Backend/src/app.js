@@ -10,6 +10,7 @@ import cookieParser from "cookie-parser";
 
 // Routers
 import { UserRouter } from "./routers/user/UserRouter.js";
+import { ProductRouter } from "./routers/product/ProductRouter.js";
 
 // Conexión a la base de datos
 import { connectionDB } from "./db/connectionDB.js";
@@ -35,6 +36,7 @@ connectionDB.connect();
 
 // Rutas
 app.use("/api/v1", UserRouter);
+app.use("/api/v1", ProductRouter);
 
 // Puerto
 app.listen(process.env.PORT, () => {

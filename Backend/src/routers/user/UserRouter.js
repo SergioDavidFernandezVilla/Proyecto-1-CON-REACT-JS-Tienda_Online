@@ -17,6 +17,9 @@ router.get("/get-user/:id", UserController.UserGetController);
 //Crear un usuario
 router.post("/register", UserController.UserRegisterController);
 
+//Crear un usuario específico
+router.post("/create-user", UserController.UserCreateController);
+
 //Login
 router.post("/login", UserController.LoginUserController);
 
