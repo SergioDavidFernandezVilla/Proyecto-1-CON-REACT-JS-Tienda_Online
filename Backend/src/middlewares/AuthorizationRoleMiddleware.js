@@ -31,7 +31,7 @@ export const AuthorizationRoleMiddleware = async(req, res, next) => {
             });
         }
 
-        if (user.role === "admin") {
+        if (user.role === process.env.ROLE_ADMIN) {
             return next();
         }
 

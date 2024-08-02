@@ -7,10 +7,12 @@ import express from "express";
 import morgan from "morgan";
 import cors from 'cors';
 import cookieParser from "cookie-parser";
+import multer from "multer";
 
 // Routers
 import { UserRouter } from "./routers/user/UserRouter.js";
 import { ProductRouter } from "./routers/product/ProductRouter.js";
+import { ImageUploadRouter } from "./routers/image/imageUpload/ImageUploadRouter.js";
 
 // Conexión a la base de datos
 import { connectionDB } from "./db/connectionDB.js";
@@ -37,6 +39,7 @@ connectionDB.connect();
 // Rutas
 app.use("/api/v1", UserRouter);
 app.use("/api/v1", ProductRouter);
+app.use("/api/v1",ImageUploadRouter );
 
 // Puerto
 app.listen(process.env.PORT, () => {

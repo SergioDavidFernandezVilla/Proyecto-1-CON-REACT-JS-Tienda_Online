@@ -19,7 +19,7 @@ export const generateToken = (user) => {
     };
 
     return jwt.sign(payload, secretKey, {
-        expiresIn: '1h',
+        expiresIn: '4h', // Expira en 4 horas para probar
     });
 };
 
