@@ -25,7 +25,7 @@ app.use(morgan("dev"));
 app.use(express.json()); // Solo esta línea es suficiente para parsear JSON
 app.use(cors(
   {
-    origin: `http://localhost:${process.env.PORT_FRONTEND}`,
+    origin: `http://localhost:${process.env.PORT_FRONTEND} || http://localhost:3000`,
     credentials: true,
   }
 )); // Permite que los requests se envíen desde cualquier origen
@@ -39,7 +39,7 @@ connectionDB.connect();
 // Rutas
 app.use("/api/v1", UserRouter);
 app.use("/api/v1", ProductRouter);
-app.use("/api/v1",ImageUploadRouter );
+app.use("/api/v1",ImageUploadRouter);
 
 // Puerto
 app.listen(process.env.PORT, () => {
