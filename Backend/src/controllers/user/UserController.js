@@ -12,6 +12,7 @@ import { generateToken, verifyToken } from "../../jwt/UserTokenJWT.js";
 
 export const UserController = {
 
+    // Obtener un usuario
     UserGetController: async (req, res) => {
         const { id } = req.params;
 
@@ -30,6 +31,7 @@ export const UserController = {
         }
     },
 
+    // Crear un usuario específico
     UserCreateController: async (req, res) => {
         const { email, password,confirmpassword, name, role } = req.body;
 
@@ -52,6 +54,7 @@ export const UserController = {
 
     },
 
+    // Crear un usuario pero register frontend
     UserRegisterController: async (req, res) => {
         const { email, password,confirmpassword, name } = req.body;
 
@@ -74,6 +77,7 @@ export const UserController = {
 
     },
 
+    // Login frontend
     LoginUserController: async (req, res) => {
         const { email, password } = req.body;
     
@@ -121,6 +125,7 @@ export const UserController = {
         }
     },
 
+    // Verificar token frontend
     VerifyTokenController: async (req, res) => {
         const token = req.headers.authorization.split(" ")[1];
 
@@ -157,6 +162,7 @@ export const UserController = {
         }
     },
 
+    // Refrescar token frontend
     RefreshTokenController: async (req, res) => {
         const token = req.headers.authorization.split(" ")[1];
 
@@ -209,6 +215,7 @@ export const UserController = {
         }
     },
 
+    // Logout frontend
     LogoutUserController: async (req, res) => {
         res.send("Cerrar sesión");
     }
