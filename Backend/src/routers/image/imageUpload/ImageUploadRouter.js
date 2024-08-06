@@ -32,6 +32,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage }); // Inicializa multer con la configuración de almacenamiento
 
+
+// Para tener acceso a la ruta del archivo subido, necesitamos hacer lo siguiente:
+//const baseDirectory = path.join(__dirname, '..', '..', '..', 'uploads'); // Ruta base
+//const filePath = path.join(baseDirectory, image.url_image); // Combina la ruta base con el nombre del archivo
+
+
+
 // Ruta para subir la imagen
 router.post("/upload-image", upload.single("image"), ImageUploadController.UploadImage);
 

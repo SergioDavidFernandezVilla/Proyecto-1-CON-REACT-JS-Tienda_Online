@@ -1,19 +1,17 @@
 import { ImageValidationRegister } from "../../../Validation/image/ImageValidation.js";
 import { ImageModel } from "../../../models/image/ImageModel.js";
-import path from 'path'; // Asegúrate de tener path importado
+import path from 'path';
 
 export const ImageUploadController = {
     UploadImage: async (req, res) => {
         const { file } = req;
-        const { product_id } = req.body;
 
-        // Asegúrate de que `file` y `product_id` existan
-        if (!file || !product_id) {
+        // Asegúrate de que `file` exista
+        if (!file) {
             return res.status(400).json({ message: "No se ha proporcionado un archivo o el ID del producto" });
         }
 
         const imageAT = file.filename; // Nombre del archivo
-        const imageURL = file.path; // Ruta del archivo
 
         try {
             // Validación de datos adicionales si es necesario
@@ -26,15 +24,13 @@ export const ImageUploadController = {
 
             // Crear la imagen en la base de datos
             const image = await ImageModel.createImage({
-                product_id,
-                image_at: imageAT, // Asumiendo que esto es lo que quieres almacenar
-                url_image: imageURL // Ruta de la imagen
+                image_at: imageAT, // Nombre del archivo
+                url_image: imageAT // Guarda solo el nombre del archivo
             });
 
             res.status(201).json({ 
                 message: "Se ha subido correctamente la imagen",
                 filename: imageAT, // Devolver el nombre del archivo
-                path: imageURL, // Devolver la ruta del archivo
                 id: image.id // Devolver el ID de la imagen
             });
         
