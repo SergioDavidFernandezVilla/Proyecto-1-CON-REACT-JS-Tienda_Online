@@ -7,21 +7,14 @@ export const ProductModel = {
         return result.rows;
     },
 
-    CreateProduct: async (title, description, price, stock, category, marca) => {
-        try {
-            const categoryQuery = `SELECT id FROM "categorys" WHERE name = $1`;
-            const categoryResult = await connectionDB.query(categoryQuery, [category]);
-            if (categoryResult.rows.length === 0) {
-                throw new Error(`Categoría no encontrada: ${category}`);
-            }
-            const categoryId = categoryResult.rows[0].id;
-    
+    CreateProduct: async (title, description, price, stock, marca) => {
+        try {    
             const productQuery = `
-                INSERT INTO "product" (title, description, price, stock, category, marca) 
-                VALUES ($1, $2, $3, $4, $5, $6) 
-                RETURNING id, title, description, price, stock, category, marca
+                INSERT INTO "product" (title, description, price, stock, marca) 
+                VALUES ($1, $2, $3, $4, $5) 
+                RETURNING id, title, description, price, stock, marca
             `;
-            const productResult = await connectionDB.query(productQuery, [title, description, price, stock, categoryId, marca]);
+            const productResult = await connectionDB.query(productQuery, [title, description, price, stock,marca]);
     
             return productResult.rows[0];
         } catch (error) {

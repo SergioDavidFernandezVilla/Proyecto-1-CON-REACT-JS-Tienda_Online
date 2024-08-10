@@ -23,7 +23,7 @@ export const ImageUploadController = {
             }
 
             // Crear la imagen en la base de datos
-            const image = await ImageModel.createImage({
+            const image = await ImageModel.UploadImage({
                 image_at: imageAT, // Nombre del archivo
                 url_image: imageAT // Guarda solo el nombre del archivo
             });
