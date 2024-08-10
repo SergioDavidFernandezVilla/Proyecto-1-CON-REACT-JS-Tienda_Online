@@ -13,6 +13,7 @@ import multer from "multer";
 import { UserRouter } from "./routers/user/UserRouter.js";
 import { ProductRouter } from "./routers/product/ProductRouter.js";
 import { ImageUploadRouter } from "./routers/image/imageUpload/ImageUploadRouter.js";
+import { CategoryRouter } from "./routers/category/CategoryRouter.js";
 
 // Conexión a la base de datos
 import { connectionDB } from "./db/connectionDB.js";
@@ -40,6 +41,7 @@ connectionDB.connect();
 app.use("/api/v1", UserRouter);
 app.use("/api/v1", ProductRouter);
 app.use("/api/v1",ImageUploadRouter);
+app.use("/api/v1",CategoryRouter);
 
 // Puerto
 app.listen(process.env.PORT, () => {

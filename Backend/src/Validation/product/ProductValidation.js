@@ -5,6 +5,17 @@ export const ProductValidationRegister = (data) => {
         return {valid: false, message: "Datos obligatorios"};
     }
 
+    const XDdata = {
+        "title": "Smartphone X100",
+        "description": "Teléfono inteligente de última generación con cámara de alta resolución y batería de larga duración.",
+        "price": 699.99,
+        "stock": 150,
+        "categoryName": "Electrónica",
+        "marca": "TechBrand",
+        "imageUrl": "https://example.com/images/smartphone_x100.jpg"
+      }
+      
+
     if (title.length > 100) {
         return {valid: false, message: "El título no puede tener más de 100 caracteres"};
     }
@@ -20,8 +31,6 @@ export const ProductValidationRegister = (data) => {
     if (category.length > 50) {
         return {valid: false, message: "La categoría no puede tener más de 50 caracteres"};
     }
-
-    
 
     return {valid: true, message: "Datos correctos"};
 }
