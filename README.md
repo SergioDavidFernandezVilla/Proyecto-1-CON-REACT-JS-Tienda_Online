@@ -14,6 +14,9 @@
 ![Vista previa del proyecto en la pagina 404 👀](Frontend/public/imagesPreview/imagen__preview__error.PNG)
 ![Vista previa del proyecto carrito de compras 🛒](Frontend/public/imagesPreview/imagen__preview__carrito.PNG)
 
+### En Desarroll
+- Aun esta en desarrollo y va ser lento pero progresivos los cambios que se van implementar.
+
 ## Tecnologías Utilizadas
 
 ### Frontend
