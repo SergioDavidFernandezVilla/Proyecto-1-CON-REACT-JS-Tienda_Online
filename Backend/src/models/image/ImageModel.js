@@ -2,17 +2,22 @@ import { connectionDB } from "../../db/connectionDB.js";
 
 
 export const ImageModel = {
-    UploadImage: async (product_id, url_image, image_at) => {
-        try {
-            const imageQuery = `INSERT INTO "image" (product_id, image_at, url_image) VALUES ($1, $2, $3)`;
-          
-            await connectionDB.query(imageQuery, [product_id, image_at, url_image]);
-    
-            return { message: "Imagen subida exitosamente" };
-        } catch (error) {
-            console.error('Error al subir la imagen:', error.message);
-            throw error;
-        }
+    AddImage: async (imageAt, imageUrl) => {
+        const query = `
+            INSERT INTO "image" (image_at, imageUrl, created_at) 
+            VALUES ($1, $2, NOW()) 
+            RETURNING id;
+        `;
+        const result = await connectionDB.query(query, [imageAt, imageUrl]);
+        return result.rows[0].id;
+    },
+
+    AssociateImageWithProduct: async (productId, imageId) => {
+        const query = `
+            INSERT INTO "product_images" (product_id, image_id) 
+            VALUES ($1, $2);
+        `;
+        await connectionDB.query(query, [productId, imageId]);
     }
     
 };

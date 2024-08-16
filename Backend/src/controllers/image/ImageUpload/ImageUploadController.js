@@ -23,10 +23,7 @@ export const ImageUploadController = {
             }
 
             // Crear la imagen en la base de datos
-            const image = await ImageModel.UploadImage({
-                image_at: imageAT, // Nombre del archivo
-                url_image: imageAT // Guarda solo el nombre del archivo
-            });
+            const image = await ImageModel.AddImage(imageAT, imageAT);
 
             res.status(201).json({ 
                 message: "Se ha subido correctamente la imagen",

@@ -2,25 +2,24 @@ import { ProductModel } from "../../models/product/productModel.js";
 import { ProductValidationRegister } from "../../Validation/product/ProductValidation.js";
 
 export const ProductController = {
-       GetProducts: async (req, res) => {
-        res.send("Productos");
-    },
-
-        CreateProduct: async (req, res) => {
-        const { title, description, price, stock, category, marca } = req.body;
-
-        const validation = ProductValidationRegister(req.body);
-
-        if (!validation.valid) {
-            return res.status(400).json({ message: validation.message });
-        }
-
+    createProduct: async (req, res) => {
         try {
-            const product = await ProductModel.CreateProduct(title, description, price, stock, category, marca);
-            res.status(201).json({ message: "Se ha registrado correctamente el producto", product: product });
+            const { title, description, price, stock, marcaId, categoryId } = req.body;
+            const productId = await ProductModel.createProduct(title, description, price, stock, marcaId, categoryId);
+            res.status(201).json({ message: 'Producto creado con éxito', productId });
         } catch (error) {
-            console.error("Error al registrar el producto:", error);
-            res.status(500).json({ message: "Error del servidor" });
+            res.status(500).json({ message: 'Error al crear el producto', error: error.message });
         }
     },
+    addImageToProduct: async (req, res) => {
+        try {
+            const { productId } = req.body; // el id de producto se pasaría en el body o la URL
+            const { imageAt, imageUrl } = req.body; // imageAt y imageUrl vienen en el body
+            const imageId = await ImageModel.addImage(imageAt, imageUrl);
+            await ImageModel.associateImageWithProduct(productId, imageId);
+            res.status(201).json({ message: 'Imagen asociada al producto con éxito' });
+        } catch (error) {
+            res.status(500).json({ message: 'Error al asociar la imagen con el producto', error: error.message });
+        }
+    }
 }
