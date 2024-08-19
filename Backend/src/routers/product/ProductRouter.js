@@ -6,7 +6,8 @@ import { ProductController } from "../../controllers/product/ProductController.j
 import { AuthorizationRoleMiddleware } from "../../middlewares/AuthorizationRoleMiddleware.js";
 
 
-router.get("/get-products", AuthorizationRoleMiddleware, ProductController.createProduct);
-router.post("/add-image-product", AuthorizationRoleMiddleware, ProductController.addImageToProduct);
+router.post("/product-created", AuthorizationRoleMiddleware, ProductController.CreateProduct);
+router.get("/get-products", AuthorizationRoleMiddleware, ProductController.VerificarHealth);
+router.post("/add-image-product", AuthorizationRoleMiddleware, ProductController.AddImageToProduct);
 
 export { router as ProductRouter };

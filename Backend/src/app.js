@@ -11,9 +11,10 @@ import multer from "multer";
 
 // Routers
 import { UserRouter } from "./routers/user/UserRouter.js";
-import { ProductRouter } from "./routers/product/ProductRouter.js";
 import { ImageUploadRouter } from "./routers/image/imageUpload/ImageUploadRouter.js";
+import { ProductRouter } from "./routers/product/ProductRouter.js";
 import { CategoryRouter } from "./routers/category/CategoryRouter.js";
+
 
 // Conexión a la base de datos
 import { connectionDB } from "./db/connectionDB.js";
