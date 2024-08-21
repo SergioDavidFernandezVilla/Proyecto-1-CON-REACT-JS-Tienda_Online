@@ -14,6 +14,7 @@ import { UserRouter } from "./routers/user/UserRouter.js";
 import { ImageUploadRouter } from "./routers/image/imageUpload/ImageUploadRouter.js";
 import { ProductRouter } from "./routers/product/ProductRouter.js";
 import { CategoryRouter } from "./routers/category/CategoryRouter.js";
+import { ProductRouterWithImage } from "./routers/productWithImage/ProductRouterWithImage.js";
 
 
 // Conexión a la base de datos
@@ -43,6 +44,7 @@ app.use("/api/v1", UserRouter);
 app.use("/api/v1", ProductRouter);
 app.use("/api/v1",ImageUploadRouter);
 app.use("/api/v1",CategoryRouter);
+app.use("/api/v1",ProductRouterWithImage);
 
 // Puerto
 app.listen(process.env.PORT, () => {
