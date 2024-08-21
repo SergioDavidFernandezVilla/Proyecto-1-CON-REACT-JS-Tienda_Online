@@ -1,14 +1,18 @@
 import { ProductModalWithImage } from "../../models/productWithImage/ProductModalWithImage.js";
+import { ProductValidationWithImage } from "../../Validation/productWithImage/ProductValidationWithImage.js";
 
 export const ProductControllerWithImage = {
     AddImageToProduct: async (req, res) => {
         try {
             const { productId, imageId } = req.body; // Obtener productId e imageId
 
-            // Validar que productId e imageId estén presentes
-            if (!productId || !imageId) {
-                return res.status(400).json({ message: 'productId e imageId son requeridos' });
+            // Validaciones de datos
+            const validation = ProductValidationWithImage({productId, imageId});
+
+            if (!validation.valid) {
+                return res.status(400).json({ message: validation.message });
             }
+            
 
             // Intentar asociar la imagen con el producto
             await ProductModalWithImage.associateImageWithProduct(productId, imageId);
