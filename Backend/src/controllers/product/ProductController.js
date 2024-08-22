@@ -1,9 +1,18 @@
 import { ProductModel } from "../../models/product/productModel.js";
+import { ProductValidationRegister } from "../../Validation/product/ProductValidation.js";
 
 export const ProductController = {
     CreateProduct: async (req, res) => {
         try {
             const { title, description, price, stock, marcaId, categoryId } = req.body;
+
+            //Validar datos
+            const validation = ProductValidationRegister(req.body);
+
+            if (!validation.valid) {
+                return res.status(400).json({ message: validation.message });
+            }
+
             const productId = await ProductModel.createProduct(title, description, price, stock, marcaId, categoryId);
             res.status(201).json({ message: 'Producto creado con éxito', productId });
         } catch (error) {

@@ -1,4 +1,5 @@
 import { ProductModelWithModa } from "../../models/productWithModa/ProductModelWithModa.js";
+import { ProductValidationWithModa } from "../../Validation/productWithModa/ProductValidationWithModa.js";
 
 export const ProductControllerWithModa = {
     AddModaToProduct: async (req,res) => {
@@ -6,8 +7,10 @@ export const ProductControllerWithModa = {
             const { productId, marcaId } = req.body; // Obtener productId e imageId
 
             // Validar que productId e imageId estén presentes
-            if (!productId || !marcaId) {
-                return res.status(400).json({ message: "productId e marcaId son requeridos" });
+            const validation = ProductValidationWithModa({productId, marcaId});
+
+            if (!validation.valid) {
+                return res.status(400).json({ message: validation.message });
             }
 
             // Intentar asociar la imagen con el producto

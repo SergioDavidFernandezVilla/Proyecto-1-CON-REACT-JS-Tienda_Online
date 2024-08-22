@@ -1,4 +1,5 @@
 import { ProductModalWithCategory } from "../../models/ProductWithCategory/ProductModalWithCategory.js";
+import { ProductValidationWithCategory } from "../../Validation/ProductWithCategory/ProductValidationWithCategory.js";
 
 export const ProductControllerWithCategory = {
     AddCategoryToProduct: async (req, res) => {
@@ -6,8 +7,10 @@ export const ProductControllerWithCategory = {
             const { productId, categoryId } = req.body; // Obtener productId e imageId
 
             // Validar que productId e imageId estén presentes
-            if (!productId || !categoryId) {
-                return res.status(400).json({ message: "productId e categoryId son requeridos" });
+           const validation = ProductValidationWithCategory({productId, categoryId});
+
+            if (!validation.valid) {
+                return res.status(400).json({ message: validation.message });
             }
 
             // Intentar asociar la imagen con el producto

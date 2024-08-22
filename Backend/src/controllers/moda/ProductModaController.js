@@ -1,12 +1,16 @@
 import { ProductModaModel } from "../../models/moda/ProductModaModel.js";
+import { ModaValidationRegister } from "../../Validation/moda/ModaValidation.js";
 
 export const ProductControllerModa = {
     CreateProductModa: async (req, res) => {
         try {
             const { name, description } = req.body;
 
-            if (!name || !description) {
-                return res.status(400).json({ message: 'Los campos name y description son requeridos' });
+           //Validar datos
+           const Validation = ModaValidationRegister(req.body);
+
+            if (!Validation.valid) {
+                return res.status(400).json({ message: Validation.message });
             }
            
             const ProductModa = await ProductModaModel.createProductModa(name, description);
