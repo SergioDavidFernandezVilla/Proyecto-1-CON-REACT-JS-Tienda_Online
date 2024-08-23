@@ -1,7 +1,7 @@
 export const ProductValidationRegister = (data) => {
     const { title, description, price, stock} = data;
 
-    if (!title || !description || !price) {
+    if (!title || !description || !price || !stock) {
         return {valid: false, message: "Datos obligatorios"};
     }
 

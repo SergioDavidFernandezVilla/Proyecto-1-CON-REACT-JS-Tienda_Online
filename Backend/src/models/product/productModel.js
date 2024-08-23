@@ -3,8 +3,8 @@ import { connectionDB } from "../../db/connectionDB.js";
 export const ProductModel = {
     createProduct: async (title, description, price, stock) => {
         const query = `
-            INSERT INTO "product" (title, description, price, stock, created_at) 
-            VALUES ($1, $2, $3, $4, NOW())
+            INSERT INTO "product" (title, description, price, stock) 
+            Values ($1, $2, $3, $4)
             RETURNING id;
         `;
         const result = await connectionDB.query(query, [title, description, price, stock]);

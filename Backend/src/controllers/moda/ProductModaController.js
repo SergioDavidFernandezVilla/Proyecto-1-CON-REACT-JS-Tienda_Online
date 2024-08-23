@@ -15,7 +15,7 @@ export const ProductControllerModa = {
            
             const ProductModa = await ProductModaModel.createProductModa(name, description);
            
-            res.status(201).json({ message: 'Producto creado con éxito', ProductModa });
+            res.status(201).json({ message: 'Producto creado con éxito', ProductModa: ProductModa });
         } catch (error) {
             res.status(500).json({ message: 'Error al crear el producto', error: error.message });
         }

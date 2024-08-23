@@ -14,10 +14,10 @@ export const ProductControllerWithCategory = {
             }
 
             // Intentar asociar la imagen con el producto
-            await ProductModalWithCategory.associateProductWithCategory(productId, categoryId);
+            const ProductWithCategory = await ProductModalWithCategory.associateProductWithCategory(productId, categoryId);
 
             // Responder con éxito
-            res.status(201).json({ message: "Categoría asociada al producto con éxito" });
+            res.status(201).json({ message: "Categoría asociada al producto con éxito", ProductWithCategory: ProductWithCategory });
         } catch (error) {
             res.status(500).json({ message: "Error al asociar la categoría con el producto", error: error.message });
         }

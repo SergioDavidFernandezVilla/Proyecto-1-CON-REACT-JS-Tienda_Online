@@ -14,10 +14,10 @@ export const ProductControllerWithModa = {
             }
 
             // Intentar asociar la imagen con el producto
-            await ProductModelWithModa.associateProductWithModa(productId, marcaId);
+            const ProductWithModa = await ProductModelWithModa.associateProductWithModa(productId, marcaId);
 
             // Responder con éxito
-            res.status(201).json({ message: "Moda asociada al producto con éxito" });
+            res.status(201).json({ message: "Moda asociada al producto con éxito", ProductWithModa: ProductWithModa });
         } catch (error) {
             res.status(500).json({ message: "Error al asociar la moda con el producto", error: error.message });
         }

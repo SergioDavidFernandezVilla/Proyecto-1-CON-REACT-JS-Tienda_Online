@@ -4,7 +4,7 @@ import { ProductValidationRegister } from "../../Validation/product/ProductValid
 export const ProductController = {
     CreateProduct: async (req, res) => {
         try {
-            const { title, description, price, stock, marcaId, categoryId } = req.body;
+            const { title, description, price, stock} = req.body;
 
             //Validar datos
             const validation = ProductValidationRegister(req.body);
@@ -13,8 +13,8 @@ export const ProductController = {
                 return res.status(400).json({ message: validation.message });
             }
 
-            const productId = await ProductModel.createProduct(title, description, price, stock, marcaId, categoryId);
-            res.status(201).json({ message: 'Producto creado con éxito', productId });
+            const product = await ProductModel.createProduct(title, description, price, stock);
+            res.status(201).json({ message: 'Producto creado con éxito', product: product });
         } catch (error) {
             res.status(500).json({ message: 'Error al crear el producto', error: error.message });
         }

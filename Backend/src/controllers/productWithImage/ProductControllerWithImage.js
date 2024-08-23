@@ -15,10 +15,10 @@ export const ProductControllerWithImage = {
             
 
             // Intentar asociar la imagen con el producto
-            await ProductModalWithImage.associateImageWithProduct(productId, imageId);
+            const ProductWithImage = await ProductModalWithImage.associateImageWithProduct(productId, imageId);
 
             // Responder con éxito
-            res.status(201).json({ message: 'Imagen asociada al producto con éxito' });
+            res.status(201).json({ message: 'Imagen asociada al producto con éxito', ProductWithImage: ProductWithImage });
         } catch (error) {
             // Manejar errores y responder con un mensaje de error
             res.status(500).json({ message: 'Error al asociar la imagen con el producto', error: error.message });
