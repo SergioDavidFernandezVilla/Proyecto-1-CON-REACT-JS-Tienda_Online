@@ -20,6 +20,9 @@ import { ImageUploadRouter } from "./routers/image/imageUpload/ImageUploadRouter
 //Producto
 import { ProductRouter } from "./routers/product/ProductRouter.js";
 
+//Productos listados
+import { ProductsListRouter } from "./routers/productsList/ProductsListRouter.js";
+
 //Producto con imagen
 import { ProductRouterWithImage } from "./routers/productWithImage/ProductRouterWithImage.js";
 
@@ -65,6 +68,9 @@ app.use("/api/v1", UserRouter);
 
 // Producto
 app.use("/api/v1", ProductRouter);
+
+// Productos listados
+app.use("/api/v1", ProductsListRouter);
 
 //Imagen
 app.use("/api/v1",ImageUploadRouter);
